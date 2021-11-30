@@ -44,7 +44,8 @@ namespace API.Plugins
         public virtual void OnInitialize() { }
 
         /// <summary>
-        /// Will be called every ~100ms (10fps)
+        /// Called every 10 times per second (~100ms or 10fps). Since this blocks the main thread,
+        /// sleeps should be avoided to ensure that network packets are received properly.
         /// </summary>
         public virtual void OnUpdate() { }
 
