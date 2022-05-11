@@ -6,6 +6,9 @@
 // Copyright 2010 Winch Gate Property Limited
 ///////////////////////////////////////////////////////////////////
 
+using API.Chat;
+using API.Entity;
+
 namespace API.Network
 {
     /// <summary>
@@ -45,5 +48,15 @@ namespace API.Network
         /// Buffers a target action
         /// </summary>
         void PushTarget(in byte slot);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        IEntityManager GetIEntityManager();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        IChatManager GetIChatManager();
     }
 }
