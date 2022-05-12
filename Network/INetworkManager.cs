@@ -1,12 +1,4 @@
-﻿///////////////////////////////////////////////////////////////////
-// This file contains modified code from 'Ryzom - MMORPG Framework'
-// http://dev.ryzom.com/projects/ryzom/
-// which is released under GNU Affero General Public License.
-// http://www.gnu.org/licenses/
-// Copyright 2010 Winch Gate Property Limited
-///////////////////////////////////////////////////////////////////
-
-using API.Chat;
+﻿using API.Chat;
 using API.Entity;
 
 namespace API.Network
@@ -50,13 +42,8 @@ namespace API.Network
         void PushTarget(in byte slot);
 
         /// <summary>
-        /// 
+        /// Returns the corresponding Entity Manager
         /// </summary>
         IEntityManager GetIEntityManager();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        IChatManager GetIChatManager();
     }
 }

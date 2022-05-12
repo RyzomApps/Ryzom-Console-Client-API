@@ -2,6 +2,6 @@
 {
     public interface IEntityManager
     {
-        IEntity UserEntity { get; set; }
+        IEntity GetUserEntity();
     }
 }
