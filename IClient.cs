@@ -97,5 +97,11 @@ namespace API
         /// <example>int result = InvokeOnMainThread(() => { yourCode(); return 42; });</example>
         /// <typeparam name="T">Type of the return value</typeparam>
         T InvokeOnMainThread<T>(Func<T> task);
+
+        /// <summary>
+        /// Send a chat message or command to the server (Enqueues messages)
+        /// </summary>
+        /// <param name="text">Text to send to the server</param>
+        void SendText(string text);
     }
 }
