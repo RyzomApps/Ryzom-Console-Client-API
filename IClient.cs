@@ -30,13 +30,13 @@ namespace API
         /// Returns the network manager which controls the connection to the ryzom server.
         /// </summary>
         /// <returns>network manager associated with this client</returns>
-        INetworkManager GetINetworkManager();
+        INetworkManager GetApiNetworkManager();
 
         /// <summary>
         /// Returns the management for dynamically generated text from servers
         /// </summary>
         /// <returns>management for dynamically generated text</returns>
-        IStringManager GetIStringManager();
+        IStringManager GetApiStringManager();
 
         /// <summary>
         /// Returns the manager for all plugins of the client

@@ -20,7 +20,7 @@ namespace API.Config
     /// </summary>
     public class ConfigurationSection
     {
-        private static CultureInfo _culture = CultureInfo.InvariantCulture;
+        private static readonly CultureInfo Culture = CultureInfo.InvariantCulture;
 
         private readonly Dictionary<string, object> _map = new Dictionary<string, object>();
 
@@ -393,7 +393,7 @@ namespace API.Config
         public int GetInt(string path)
         {
             var def = GetDefault(path);
-            return GetInt(path, int.TryParse(def.ToString(), NumberStyles.Any, _culture, out var ret) ? ret : 0);
+            return GetInt(path, int.TryParse(def.ToString(), NumberStyles.Any, Culture, out var ret) ? ret : 0);
         }
 
         /// <summary>
@@ -405,7 +405,7 @@ namespace API.Config
         public int GetInt(string path, int def)
         {
             var val = Get(path, def);
-            return int.TryParse(val.ToString(), NumberStyles.Any, _culture, out var ret) ? ret : def;
+            return int.TryParse(val.ToString(), NumberStyles.Any, Culture, out var ret) ? ret : def;
         }
 
         /// <summary>
@@ -461,7 +461,7 @@ namespace API.Config
         public double GetDouble(string path)
         {
             var def = GetDefault(path);
-            return GetDouble(path, double.TryParse(def.ToString(), NumberStyles.Any, _culture, out var ret) ? ret : 0);
+            return GetDouble(path, double.TryParse(def.ToString(), NumberStyles.Any, Culture, out var ret) ? ret : 0);
         }
 
         /// <summary>
@@ -473,7 +473,7 @@ namespace API.Config
         public double GetDouble(string path, double def)
         {
             var val = Get(path, def);
-            return double.TryParse(val.ToString(), NumberStyles.Any, _culture, out var ret) ? ret : def;
+            return double.TryParse(val.ToString(), NumberStyles.Any, Culture, out var ret) ? ret : def;
         }
 
         /// <summary>
@@ -495,7 +495,7 @@ namespace API.Config
         public long GetLong(string path)
         {
             var def = GetDefault(path);
-            return GetLong(path, long.TryParse(def.ToString(), NumberStyles.Any, _culture, out var ret) ? ret : 0);
+            return GetLong(path, long.TryParse(def.ToString(), NumberStyles.Any, Culture, out var ret) ? ret : 0);
         }
 
         /// <summary>
@@ -507,7 +507,7 @@ namespace API.Config
         public long GetLong(string path, long def)
         {
             var val = Get(path, def);
-            return long.TryParse(val.ToString(), NumberStyles.Any, _culture, out var ret) ? ret : def;
+            return long.TryParse(val.ToString(), NumberStyles.Any, Culture, out var ret) ? ret : def;
         }
 
         /// <summary>
@@ -609,7 +609,7 @@ namespace API.Config
                     case string s:
                         try
                         {
-                            result.Add(int.Parse(s, NumberStyles.Any, _culture));
+                            result.Add(int.Parse(s, NumberStyles.Any, Culture));
                         }
                         catch (Exception)
                         {
@@ -713,7 +713,7 @@ namespace API.Config
                     case string s:
                         try
                         {
-                            result.Add(double.Parse(s, NumberStyles.Any, _culture));
+                            result.Add(double.Parse(s, NumberStyles.Any, Culture));
                         }
                         catch (Exception)
                         {
@@ -774,7 +774,7 @@ namespace API.Config
                     case string s:
                         try
                         {
-                            result.Add(float.Parse(s, NumberStyles.Any, _culture));
+                            result.Add(float.Parse(s, NumberStyles.Any, Culture));
                         }
                         catch (Exception)
                         {
@@ -837,7 +837,7 @@ namespace API.Config
                     case string s:
                         try
                         {
-                            result.Add(long.Parse(s, NumberStyles.Any, _culture));
+                            result.Add(long.Parse(s, NumberStyles.Any, Culture));
                         }
                         catch (Exception)
                         {
@@ -898,7 +898,7 @@ namespace API.Config
                     case string s:
                         try
                         {
-                            result.Add(byte.Parse(s, NumberStyles.Any, _culture));
+                            result.Add(byte.Parse(s, NumberStyles.Any, Culture));
                         }
                         catch (Exception)
                         {
@@ -1002,7 +1002,7 @@ namespace API.Config
                     case string s:
                         try
                         {
-                            result.Add(short.Parse(s, NumberStyles.Any, _culture));
+                            result.Add(short.Parse(s, NumberStyles.Any, Culture));
                         }
                         catch (Exception)
                         {

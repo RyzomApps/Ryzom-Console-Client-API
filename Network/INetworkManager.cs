@@ -1,5 +1,4 @@
-﻿using API.Chat;
-using API.Entity;
+﻿using API.Entity;
 
 namespace API.Network
 {
@@ -44,6 +43,6 @@ namespace API.Network
         /// <summary>
         /// Returns the corresponding Entity Manager
         /// </summary>
-        IEntityManager GetIEntityManager();
+        IEntityManager GetApiEntityManager();
     }
 }
