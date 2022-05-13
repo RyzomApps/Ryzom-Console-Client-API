@@ -72,6 +72,11 @@ namespace API.Plugins
         public virtual void OnEntityUpdateBars(uint gameCycle, long prop, byte slot, byte hitPoints, byte stamina, byte sap, byte focus) { }
 
         /// <summary>
+        /// called when an entity position changes
+        /// </summary>
+        public virtual void OnEntityUpdatePos(uint gameCycle, long prop, byte slot, uint predictedInterval, Vector3 pos) { }
+
+        /// <summary>
         /// Remove a contact by the server
         /// </summary>
         public virtual void OnTeamContactRemove(uint contactId, byte nList) { }
