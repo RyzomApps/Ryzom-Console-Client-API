@@ -10,7 +10,7 @@ namespace API.Entity
         /// <summary>
         /// Position Vector of the entity
         /// </summary>
-        Vector3 Pos { get; }
+        Vector3 Pos { get; set; }
 
         /// <summary>
         /// Used to get a position in front of the entity based on the direction they are facing
