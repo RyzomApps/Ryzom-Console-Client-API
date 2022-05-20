@@ -61,5 +61,12 @@ namespace API.Entity
         /// Return the entity Id (persistent as long as the entity is connected) (CLFECOMMON::INVALID_CLIENT_DATASET_INDEX for an invalid one)
         /// </summary>
         uint DataSetId();
+
+        /// <summary>
+        /// Set the current target of the entity
+        /// </summary>
+        /// <param name="entityId">TCLEntityId</param>
+        /// <remarks>CLFECOMMON::INVALID_SLOT for no target</remarks>
+        void SetTargetSlot(byte entityId);
     }
 }

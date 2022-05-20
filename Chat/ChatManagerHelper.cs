@@ -3,15 +3,15 @@ using API.Entity;
 
 namespace API.Chat
 {
-    public class ChatManagerBase
+    public class ChatManagerHelper
     {
         /// <summary>
         /// build a sentence to be displayed in the tell
         /// </summary>
-        protected static void BuildTellSentence(string sender, string msg, out string result)
+        public static void BuildTellSentence(string sender, string msg, out string result)
         {
             // If no sender name was provided, show only the msg
-            var name = EntityBase.RemoveTitleAndShardFromName(sender);
+            var name = EntityHelper.RemoveTitleAndShardFromName(sender);
 
             if (sender.Length == 0)
                 result = msg;
@@ -29,7 +29,7 @@ namespace API.Chat
         /// <summary>
         /// build a sentence to be displayed in the chat (e.g add "you say", "you shout", "[user name] says" or "[user name] shout")
         /// </summary>
-        protected static void BuildChatSentence(string sender, string msg, ChatGroupType type,
+        public static void BuildChatSentence(string sender, string msg, ChatGroupType type,
             out string result)
         {
             // if its a tell, then use buildTellSentence
@@ -61,7 +61,7 @@ namespace API.Chat
             }
 
             // Format the sentence with the provided sender name
-            var senderName = EntityBase.RemoveTitleAndShardFromName(sender);
+            var senderName = EntityHelper.RemoveTitleAndShardFromName(sender);
 
             // TODO Does the char have a CSR title?
             const string csr = "";

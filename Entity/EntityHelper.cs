@@ -8,7 +8,7 @@
 
 namespace API.Entity
 {
-    public class EntityBase
+    public class EntityHelper
     {
         #region Static Methods
 
