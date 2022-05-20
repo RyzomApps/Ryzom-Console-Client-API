@@ -7,7 +7,7 @@ namespace API.Entity
         /// <summary>
         /// Player Entity
         /// </summary>
-        IEntity GetApiUserEntity();
+        IUserEntity GetApiUserEntity();
 
         /// <summary>
         /// Contain all 256 entities around the player

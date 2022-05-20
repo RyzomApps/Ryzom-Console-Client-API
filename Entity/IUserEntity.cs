@@ -8,7 +8,7 @@
 
 namespace API.Entity
 {
-    public interface IUserEntity
+    public interface IUserEntity : IEntity
     {
         /// <summary>
         /// Change the entity selected.
