@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Numerics;
 using API.Chat;
 using API.Network;
@@ -195,5 +196,10 @@ namespace API.Plugins
         /// Any chat will arrive here 
         /// </summary>
         public virtual void OnChat(uint compressedSenderIndex, string ucstr, string rawMessage, ChatGroupType mode, uint dynChatId, string senderName, uint bubbleTimer) { }
+
+        /// <summary>
+        /// Called when a characters orientation is changed
+        /// </summary>
+        public virtual void OnEntityUpdateOrient(uint gameCycle, long prop) { }
     }
 }
