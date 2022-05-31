@@ -10,6 +10,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using API.Helper;
 
@@ -529,7 +530,11 @@ namespace API.Config
         public IList GetList(string path)
         {
             var def = GetDefault(path);
-            return GetList(path, def is IList list ? list : null);
+
+            var section = def as ConfigurationSection;
+            var list = section?._map.Select(k => k.Value).ToList();
+
+            return GetList(path, list);
         }
 
         /// <summary>
@@ -541,7 +546,11 @@ namespace API.Config
         public IList GetList(string path, IList def)
         {
             var val = Get(path, def);
-            return (IList)(val is IList ? val : def);
+
+            var section = val as ConfigurationSection;
+            var list = section?._map.Select(k => k.Value).ToList();
+
+            return list ?? def;
         }
 
         /// <summary>
@@ -552,7 +561,11 @@ namespace API.Config
         public bool IsList(string path)
         {
             var val = Get(path);
-            return val is IList;
+
+            var section = val as ConfigurationSection;
+            var list = section?._map.Select(k => k.Value).ToList();
+
+            return list != null;
         }
 
         /// <summary>

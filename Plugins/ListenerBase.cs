@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Numerics;
 using API.Chat;
+using API.Database;
 using API.Network;
 using API.Plugins.Interfaces;
 
@@ -201,5 +202,20 @@ namespace API.Plugins
         /// Called when a characters orientation is changed
         /// </summary>
         public virtual void OnEntityUpdateOrient(uint gameCycle, long prop) { }
+
+        /// <summary>
+        /// Called when a database bank gets initialized
+        /// </summary>
+        public virtual void OnDatabaseInitBank(uint serverTick, uint bank, IDatabaseManager database) { }
+
+        /// <summary>
+        /// Called when a database bank gets updated
+        /// </summary>
+        public virtual void OnDatabaseResetBank(uint serverTick, uint bank, IDatabaseManager database) { }
+
+        /// <summary>
+        /// Called when a database bank gets resetted
+        /// </summary>
+        public virtual void OnDatabaseUpdateBank(uint serverTick, uint bank, IDatabaseManager database) { }
     }
 }
