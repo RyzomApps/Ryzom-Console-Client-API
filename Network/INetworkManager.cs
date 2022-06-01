@@ -44,5 +44,10 @@ namespace API.Network
         /// Returns the corresponding Entity Manager
         /// </summary>
         IEntityManager GetApiEntityManager();
+
+        /// <summary>
+        /// Last tick sent by the server from the network connection
+        /// </summary>
+        uint GetCurrentServerTick();
     }
 }
