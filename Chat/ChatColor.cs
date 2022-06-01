@@ -2,6 +2,8 @@
 
 using System;
 using System.Drawing;
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace API.Chat
 {
@@ -110,6 +112,50 @@ namespace API.Chat
         /// </summary>
         public static string UNDERLINE = "§n";
 
+
+        private const string _minecraftColorPattern = @"\@\{[0-9ABCDEFabcdef]{4}\}";
+
+        /// <summary>
+        /// Tries to replace Ryzom colors (e.g. @{F0FF}) with Minecraft colors
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public static string ReplaceRyzomColors(string msg)
+        {
+            try
+            {
+                if (msg.Length < 7)
+                    return msg;
+
+                // Instantiate the regular expression object.
+                var r = new Regex(_minecraftColorPattern, RegexOptions.IgnoreCase);
+
+                // Match the regular expression pattern against a text string.
+                var m = r.Match(msg);
+
+                while (m.Success)
+                {
+                    var colorcode = m.Value[2..^1];
+
+                    var color = Color.FromArgb(255, // hardcoded opaque
+                        int.Parse(colorcode.Substring(0, 1) + colorcode.Substring(0, 1), NumberStyles.HexNumber),
+                        int.Parse(colorcode.Substring(1, 1) + colorcode.Substring(1, 1), NumberStyles.HexNumber),
+                        int.Parse(colorcode.Substring(2, 1) + colorcode.Substring(2, 1), NumberStyles.HexNumber));
+
+                    var consoleColor = FromColor(color);
+
+                    msg = msg.Replace(m.Value, "§" + GetMinecraftColorFromConsoleColor(consoleColor));
+                    m = m.NextMatch();
+                }
+            }
+            catch
+            {
+                // ignored
+            }
+
+            return msg;
+        }
+
         /// <summary>
         /// Makes the text italic.
         /// </summary>
@@ -172,6 +218,65 @@ namespace API.Chat
                     i++;
 
             return new string(data, 0, idx);
+        }
+
+        /// <summary>
+        /// returns the console color code for minecraft color char
+        /// </summary>
+        /// <param name="minecraftColorChar">char representing the minecraft color</param>
+        /// <returns>a console color</returns>
+        public static ConsoleColor GetConsoleColorFromMinecraftColor(char minecraftColorChar)
+        {
+            return minecraftColorChar switch
+            {
+                '0' => ConsoleColor.Gray, //Should be Black but Black is non-readable on a black background
+                '1' => ConsoleColor.DarkBlue,
+                '2' => ConsoleColor.DarkGreen,
+                '3' => ConsoleColor.DarkCyan,
+                '4' => ConsoleColor.DarkRed,
+                '5' => ConsoleColor.DarkMagenta,
+                '6' => ConsoleColor.DarkYellow,
+                '7' => ConsoleColor.Gray,
+                '8' => ConsoleColor.DarkGray,
+                '9' => ConsoleColor.Blue,
+                'a' => ConsoleColor.Green,
+                'b' => ConsoleColor.Cyan,
+                'c' => ConsoleColor.Red,
+                'd' => ConsoleColor.Magenta,
+                'e' => ConsoleColor.Yellow,
+                'f' => ConsoleColor.White,
+                'r' => ConsoleColor.Gray,
+                _ => ConsoleColor.Gray
+            };
+        }
+
+        /// <summary>
+        /// returns the minecraft color char for console color code
+        /// </summary>
+        /// <param name="consoleColor">char representing the minecraft color</param>
+        /// <returns>a minecraft color char</returns>
+        public static char GetMinecraftColorFromConsoleColor(ConsoleColor consoleColor)
+        {
+            return consoleColor switch
+            {
+                ConsoleColor.Black => '0',
+                ConsoleColor.DarkBlue => '1',
+                ConsoleColor.DarkGreen => '2',
+                ConsoleColor.DarkCyan => '3',
+                ConsoleColor.DarkRed => '4',
+                ConsoleColor.DarkMagenta => '5',
+                ConsoleColor.DarkYellow => '6',
+                ConsoleColor.Gray => '7',
+                ConsoleColor.DarkGray => '8',
+                ConsoleColor.Blue => '9',
+                ConsoleColor.Green => 'a',
+                ConsoleColor.Cyan => 'b',
+                ConsoleColor.Red => 'c',
+                ConsoleColor.Magenta => 'd',
+                ConsoleColor.Yellow => 'e',
+                ConsoleColor.White => 'f',
+                _ => throw new ArgumentOutOfRangeException(nameof(consoleColor), consoleColor, null)
+            };
         }
     }
 }
