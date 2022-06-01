@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using API.Client;
+using API.Database;
 using API.Logger;
 using API.Network;
 using API.Plugins.Interfaces;
@@ -37,6 +38,12 @@ namespace API
         /// </summary>
         /// <returns>management for dynamically generated text</returns>
         IStringManager GetApiStringManager();
+
+        /// <summary>
+        /// Returns the class that encapsulates the separate client database components
+        /// </summary>
+        /// <returns>the client database manager</returns>
+        IDatabaseManager GetApiDatabaseManager();
 
         /// <summary>
         /// Returns the manager for all plugins of the client
