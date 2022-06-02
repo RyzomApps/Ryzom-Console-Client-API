@@ -174,7 +174,7 @@ namespace API.Plugins
                 throw new ArgumentException($"The embedded resource '{fileName}' cannot be found in {_file}");
             }
 
-            var outFile = new FileInfo($"{_dataFolder}\\{fileName}");
+            var outFile = new FileInfo($"{_dataFolder}/{fileName}");
 
             if (!_dataFolder.Exists)
             {
@@ -252,7 +252,7 @@ namespace API.Plugins
             _description = description;
             _dataFolder = dataFolder;
             _classLoader = classLoader;
-            _configFile = new FileInfo($@"{dataFolder}\config.yml");
+            _configFile = new FileInfo($@"{dataFolder}/config.yml");
             _logger = new PluginLoggerWrapper(this, server.GetLogger());
         }
 
