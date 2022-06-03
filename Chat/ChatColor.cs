@@ -237,7 +237,7 @@ namespace API.Chat
                 '5' => ConsoleColor.DarkMagenta,
                 '6' => ConsoleColor.DarkYellow,
                 '7' => ConsoleColor.Gray,
-                '8' => ConsoleColor.DarkGray,
+                '8' => ConsoleColor.DarkGray, // is black when used in centos linux
                 '9' => ConsoleColor.Blue,
                 'a' => ConsoleColor.Green,
                 'b' => ConsoleColor.Cyan,

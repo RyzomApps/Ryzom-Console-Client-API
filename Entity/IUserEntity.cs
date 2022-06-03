@@ -16,6 +16,11 @@ namespace API.Entity
         /// <param name="slot">slot now selected (CLFECOMMON::INVALID_SLOT for an empty selection)</param>
         /// <param name="client">client associated with the entity</param>
         /// <remarks>Can be different from the entity targeted (in combat mode for example)</remarks>
-        void Selection(byte slot, IClient client);
+        void Selection(byte slot);
+
+        /// <summary>
+        /// Default attack on the current selection.
+        /// </summary>
+        void Attack();
     }
 }
