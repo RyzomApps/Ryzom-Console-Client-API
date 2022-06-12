@@ -71,7 +71,7 @@ namespace API.Plugins
         /// <summary>
         /// called when an entity health, sap, stamina or focus value changes
         /// </summary>
-        public virtual void OnEntityUpdateBars(uint gameCycle, long prop, byte slot, byte hitPoints, byte stamina, byte sap, byte focus) { }
+        public virtual void OnEntityUpdateBars(uint gameCycle, long prop, byte slot, sbyte hitPoints, byte stamina, byte sap, byte focus) { }
 
         /// <summary>
         /// called when an entity position changes
