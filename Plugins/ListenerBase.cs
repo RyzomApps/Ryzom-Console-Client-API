@@ -217,5 +217,11 @@ namespace API.Plugins
         /// Called when a database bank gets resetted
         /// </summary>
         public virtual void OnDatabaseUpdateBank(uint serverTick, uint bank, IDatabaseManager database) { }
+
+        /// <summary>
+        /// Called when the server upload the phrases
+        /// </summary>
+        /// TODO: move classes to the API and write an extension for the serialisation
+        public virtual void OnPhraseDownLoad(object phrases, object memorizedPhrases) { }
     }
 }
