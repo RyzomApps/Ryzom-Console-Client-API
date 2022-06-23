@@ -36,7 +36,7 @@ namespace API.Plugins
             _dataFolder = dataFolder;
             _file = file;
 
-            var asm = Assembly.LoadFile(file.FullName);
+            var asm = Assembly.LoadFrom(file.FullName);
 
             var type = asm.GetType(description.GetMain());
 
