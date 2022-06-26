@@ -17,18 +17,22 @@ namespace API.Logger
         /// true, if debugging messages should be output
         /// </summary>
         bool DebugEnabled { get; set; }
+
         /// <summary>
         /// true, if warnings messages should be output
         /// </summary>
         bool WarnEnabled { get; set; }
+
         /// <summary>
         /// true, if informational messages should be output
         /// </summary>
         bool InfoEnabled { get; set; }
+
         /// <summary>
         /// true, if error-handling messages should be output
         /// </summary>
         bool ErrorEnabled { get; set; }
+
         /// <summary>
         /// true, if the ingame chat should be output
         /// </summary>
@@ -38,10 +42,12 @@ namespace API.Logger
         /// Output an informational message
         /// </summary>
         void Info(string msg);
+
         /// <summary>
         /// Output an informational message with formatting parameters
         /// </summary>
         void Info(string msg, params object[] args);
+
         /// <summary>
         /// Output an informational message
         /// </summary>
@@ -51,10 +57,12 @@ namespace API.Logger
         /// Output a debugging message
         /// </summary>
         void Debug(string msg);
+
         /// <summary>
         /// Output a debugging message with formatting parameters
         /// </summary>
         void Debug(string msg, params object[] args);
+
         /// <summary>
         /// Output a debugging message
         /// </summary>
@@ -64,10 +72,12 @@ namespace API.Logger
         /// Output a debugging message
         /// </summary>
         void Warn(string msg);
+
         /// <summary>
         /// Output a debugging message with formatting parameters
         /// </summary>
         void Warn(string msg, params object[] args);
+
         /// <summary>
         /// Output a debugging message
         /// </summary>
@@ -77,10 +87,12 @@ namespace API.Logger
         /// Output an error-handling message
         /// </summary>
         void Error(string msg);
+
         /// <summary>
         /// Output an error-handling message with formatting parameters
         /// </summary>
         void Error(string msg, params object[] args);
+
         /// <summary>
         /// Output an error-handling message
         /// </summary>
@@ -90,10 +102,12 @@ namespace API.Logger
         /// Output an ingame chat message
         /// </summary>
         void Chat(string msg);
+
         /// <summary>
         /// Output an ingame chat message with formatting parameters
         /// </summary>
         void Chat(string msg, params object[] args);
+
         /// <summary>
         /// Output an ingame chat message
         /// </summary>
