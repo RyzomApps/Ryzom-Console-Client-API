@@ -41,6 +41,6 @@
         /// <summary>
         /// Get the current value for a specific bar
         /// </summary>
-        float GetCurrentBarValue(TfsBarIndex index);
+        byte GetCurrentBarValue(TfsBarIndex index);
     }
 }
