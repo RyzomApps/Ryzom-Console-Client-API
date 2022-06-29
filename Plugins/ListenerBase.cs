@@ -221,7 +221,11 @@ namespace API.Plugins
         /// <summary>
         /// Called when the server upload the phrases
         /// </summary>
-        /// TODO: move classes to the API and write an extension for the serialisation
         public virtual void OnPhraseDownLoad(object phrases, object memorizedPhrases) { }
+
+        /// <summary>
+        /// Called when the server phrase execution acknowledgement has been received
+        /// </summary>
+        public virtual void OnPhraseAckExecute(in bool cyclic, in byte counterValue, in bool ok) { }
     }
 }
