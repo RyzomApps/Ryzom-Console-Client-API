@@ -30,8 +30,9 @@ namespace API.Commands
         public abstract string CmdDesc { get; }
 
         /// <summary>
-        /// Usage message, eg: 'name [args]'
+        /// Usage message, e.g.: '&lt;arg_1&gt; [arg_2]'
         /// </summary>
+        /// <remarks>Should not contain the command itself. Arguments should not contain spaces.</remarks>
         public abstract string CmdUsage { get; }
 
         /// <summary>
