@@ -41,10 +41,10 @@ namespace API.Commands
         /// <returns>Translated command description</returns>
         public string GetCmdDescTranslated()
         {
-            var s = string.IsNullOrEmpty(CmdUsage) || string.IsNullOrEmpty(CmdDesc)
-                ? ""
-                : ": "; // If either one is empty, no colon :
-            return CmdUsage + s + CmdDesc;
+            var s1 = string.IsNullOrEmpty(CmdUsage) ? "" : " §a"; // If either one is empty, no colon :
+            var s2 = string.IsNullOrEmpty(CmdDesc) ? "" : "§e: §f"; // If either one is empty, no colon :
+
+            return "§e" + CmdName + s1 + CmdUsage + s2 + CmdDesc;
         }
 
         /// <summary>
