@@ -254,6 +254,8 @@ namespace API.Plugins
             _classLoader = classLoader;
             _configFile = new FileInfo($@"{dataFolder}/config.yml");
             _logger = new PluginLoggerWrapper(this, server.GetLogger());
+
+            OnLoad();
         }
 
         /// <inheritdoc />
