@@ -30,6 +30,11 @@ namespace API.Network
         void Send();
 
         /// <summary>
+        /// Gets the current server TPS
+        /// </summary>
+        double[] GetTps();
+
+        /// <summary>
         /// sendMsgToServer Helper
         /// selects the message by its name and pushes it to the connection
         /// </summary>

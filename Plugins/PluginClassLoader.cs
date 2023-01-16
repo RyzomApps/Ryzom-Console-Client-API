@@ -9,9 +9,10 @@ using API.Plugins.Interfaces;
 namespace API.Plugins
 {
     /// <summary>
-    /// A ClassLoader for plugins, to allow shared classes across multiple plugins [bdh: well not rly (yet)]
+    /// A ClassLoader for plugins, to allow shared classes across multiple plugins.
     /// </summary>
-    /// TODO: Maybe remove the ClassLoader (since we dont need shared classes) and add the functionality to the PluginLoader
+    /// <remarks>Shared classes not really working (yet).</remarks>
+    /// TODO: Maybe remove the ClassLoader (since we don't need shared classes) and add the functionality to the PluginLoader
     public class PluginClassLoader : IClassLoader
     {
         private readonly IPluginLoader _pluginLoader;
