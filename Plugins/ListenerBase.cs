@@ -14,7 +14,7 @@ namespace API.Plugins
     public abstract class ListenerBase : IListener
     {
         /// <summary>
-        /// Enum of reasons for a disconnection
+        /// Enumeration of reasons for a disconnection
         /// </summary>
         public enum DisconnectReason { InGameKick, LoginRejected, ConnectionLost, UserLogout };
 
@@ -29,7 +29,7 @@ namespace API.Plugins
         private delegate string CommandRunner(string command, string[] args);
 
         /// <summary>
-        /// Is called when the client has been disconnected fom the server
+        /// Is called when the client has been disconnected from the server
         /// </summary>
         /// <param name="reason">Disconnect Reason</param>
         /// <param name="message">Kick message, if any</param>
@@ -99,7 +99,7 @@ namespace API.Plugins
         public virtual void OnGuildUpdatePlayerTitle(bool unblock, int len, List<ushort> titles) { }
 
         /// <summary>
-        /// called when the server sends a new respawn point
+        /// called when the server sends a new re-spawn point
         /// </summary>
         public virtual void OnDeathRespawnPoint(int x, int y) { }
 
@@ -157,12 +157,12 @@ namespace API.Plugins
         public virtual void OnDatabaseUpdatePlayer(uint serverTick) { }
 
         /// <summary>
-        /// called when the client receives the shard id and the webhost from the server
+        /// called when the client receives the shard id and the web-host from the server
         /// </summary>
         public virtual void OnShardID(in uint shardId, string webHost) { }
 
         /// <summary>
-        /// Calles when the ingame database was received
+        /// Called when the in-game database was received
         /// </summary>
         public virtual void OnIngameDatabaseInitialized() { }
 
@@ -214,7 +214,7 @@ namespace API.Plugins
         public virtual void OnDatabaseResetBank(uint serverTick, uint bank, IDatabaseManager database) { }
 
         /// <summary>
-        /// Called when a database bank gets resetted
+        /// Called when a database bank gets reseted
         /// </summary>
         public virtual void OnDatabaseUpdateBank(uint serverTick, uint bank, IDatabaseManager database) { }
 
@@ -224,8 +224,13 @@ namespace API.Plugins
         public virtual void OnPhraseDownLoad(object phrases, object memorizedPhrases) { }
 
         /// <summary>
-        /// Called when the server phrase execution acknowledgement has been received
+        /// Called when the server phrase execution acknowledgment has been received
         /// </summary>
         public virtual void OnPhraseAckExecute(in bool cyclic, in byte counterValue, in bool ok) { }
+
+        /// <summary>
+        /// Called when the server cancels the client quit process
+        /// </summary>
+        public virtual void OnServerQuitAbort() { }
     }
 }
