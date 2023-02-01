@@ -13,6 +13,7 @@ using API.Database;
 using API.Logger;
 using API.Network;
 using API.Plugins.Interfaces;
+using API.Sheet;
 
 namespace API
 {
@@ -50,6 +51,18 @@ namespace API
         /// </summary>
         /// <returns>manager for all plugins</returns>
         IPluginManager GetPluginManager();
+
+        /// <summary>
+        /// Returns the class that manages all sheets
+        /// </summary>
+        /// <returns>Class to manage all sheets</returns>
+        ISheetManager GetApiSheetManager();
+
+        /// <summary>
+        /// Returns the class that can generate sheets from strings and numbers
+        /// </summary>
+        /// <returns>Factory for SheetIds from names and ids</returns>
+        ISheetIdFactory GetApiSheetIdFactory();
 
         /// <summary>
         /// Online State
