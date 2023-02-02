@@ -23,6 +23,11 @@ namespace API.Entity
         Vector3 Dir { get; set; }
 
         /// <summary>
+        /// Flags to know what is possible to do with the entity (selectable, liftable, etc.).
+        /// </summary>
+        EntityProperties EntityProperties { get; set; }
+
+        /// <summary>
         /// Return a displayable name
         /// </summary>
         string GetDisplayName();
