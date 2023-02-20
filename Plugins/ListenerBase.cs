@@ -172,6 +172,11 @@ namespace API.Plugins
         public virtual void OnEntityRemove(in byte slot) { }
 
         /// <summary>
+        /// Called when an entity is created
+        /// </summary>
+        public virtual void OnEntityCreate(byte slot) { }
+
+        /// <summary>
         /// called when visual property is updated
         /// </summary>
         public virtual void OnEntityUpdateVisualProperty(in uint gameCycle, in byte slot, in byte prop, in uint predictedInterval) { }
@@ -226,7 +231,7 @@ namespace API.Plugins
         /// <summary>
         /// Called when the server phrase execution acknowledgment has been received
         /// </summary>
-        public virtual void OnPhraseAckExecute(in bool cyclic, in byte counterValue, in bool ok) { }
+        public virtual void OnPhraseAckExecute(bool cyclic, byte counterValue, bool ok) { }
 
         /// <summary>
         /// Called when the server cancels the client quit process
