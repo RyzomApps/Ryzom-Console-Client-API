@@ -126,17 +126,17 @@ namespace API.Plugins
         /// <summary>
         /// called when the string cache reloads
         /// </summary>
-        public virtual void OnReloadCache(in int timestamp) { }
+        public virtual void OnReloadCache(int timestamp) { }
 
         /// <summary>
         /// called when the local string set updates
         /// </summary>
-        public virtual void OnStringResp(in uint stringId, string strUtf8) { }
+        public virtual void OnStringResp(uint stringId, string strUtf8) { }
 
         /// <summary>
         /// called when the player gets invited to a team
         /// </summary>
-        public virtual void OnTeamInvitation(in uint textID) { }
+        public virtual void OnTeamInvitation(uint textID) { }
 
         /// <summary>
         /// called when the server sends information about the user char after the login
@@ -159,7 +159,7 @@ namespace API.Plugins
         /// <summary>
         /// called when the client receives the shard id and the web-host from the server
         /// </summary>
-        public virtual void OnShardID(in uint shardId, string webHost) { }
+        public virtual void OnShardID(uint shardId, string webHost) { }
 
         /// <summary>
         /// Called when the in-game database was received
@@ -169,7 +169,7 @@ namespace API.Plugins
         /// <summary>
         /// called when an entity gets removed
         /// </summary>
-        public virtual void OnEntityRemove(in byte slot) { }
+        public virtual void OnEntityRemove(byte slot) { }
 
         /// <summary>
         /// Called when an entity is created
@@ -179,7 +179,7 @@ namespace API.Plugins
         /// <summary>
         /// called when visual property is updated
         /// </summary>
-        public virtual void OnEntityUpdateVisualProperty(in uint gameCycle, in byte slot, in byte prop, in uint predictedInterval) { }
+        public virtual void OnEntityUpdateVisualProperty(uint gameCycle, byte slot, uint prop, uint predictedInterval) { }
 
         /// <summary>
         /// Called when one of the characters from the friend list updates
