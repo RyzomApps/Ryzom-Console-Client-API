@@ -23,7 +23,7 @@ namespace API.Entity
         Vector3 Dir { get; set; }
 
         /// <summary>
-        /// Flags to know what is possible to do with the entity (selectable, liftable, etc.).
+        /// Flags to know what is possible to do with the entity (selectable, lift-able, etc.).
         /// </summary>
         EntityProperties EntityProperties { get; set; }
 
@@ -73,5 +73,10 @@ namespace API.Entity
         /// <param name="entityId">TCLEntityId</param>
         /// <remarks>CLFECOMMON::INVALID_SLOT for no target</remarks>
         void SetTargetSlot(byte entityId);
+
+        /// <summary>
+        /// Return true if the character is currently dead.
+        /// </summary>
+        bool IsDead();
     }
 }
