@@ -25,7 +25,7 @@ namespace API.Entity
         /// <summary>
         /// Flags to know what is possible to do with the entity (selectable, lift-able, etc.).
         /// </summary>
-        EntityProperties EntityProperties { get; set; }
+        EntityProperties Properties { get; set; }
 
         /// <summary>
         /// Return a displayable name
