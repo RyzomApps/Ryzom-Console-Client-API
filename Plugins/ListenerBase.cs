@@ -141,7 +141,7 @@ namespace API.Plugins
         /// <summary>
         /// called when the server sends information about the user char after the login
         /// </summary>
-        public virtual void OnUserChar(int highestMainlandSessionId, int firstConnectedTime, int playedTime, Vector3 initPos, Vector3 initFront, short season, int role, bool isInRingSession) { }
+        public virtual void OnUserChar(int highestMainlandSessionId, int firstConnectedTime, int playedTime, Vector3 initPos, Vector3 initFront, byte season, int role, bool isInRingSession) { }
 
         /// <summary>
         /// called when the server sends information about the all the user chars
@@ -237,5 +237,10 @@ namespace API.Plugins
         /// Called when the server cancels the client quit process
         /// </summary>
         public virtual void OnServerQuitAbort() { }
+
+        /// <summary>
+        // Called when the server wants to teleport the user
+        /// </summary>
+        public virtual void OnTeleport(bool hasSeason) { }
     }
 }
