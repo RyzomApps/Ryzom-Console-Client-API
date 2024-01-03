@@ -155,7 +155,7 @@ namespace API.Plugins.Interfaces
         /// </summary>
         /// <param name="cmdName">Name of the command</param>
         /// <param name="cmdDesc">Description/usage of the command</param>
-        /// <param name="cmdUsage">Usage example</param>
+        /// <param name="cmdUsage">Usage example (of the command parameters)</param>
         /// <param name="callback">Method for handling the command</param>
         /// <returns>True if successfully registered</returns>
         bool RegisterCommand(string cmdName, string cmdDesc, string cmdUsage, IClient.CommandRunner callback);
