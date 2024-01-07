@@ -171,14 +171,21 @@ namespace API.Chat
         /// </summary>
         /// <param name="msg">message to be processed</param>
         /// <returns>message without translations</returns>
-        public static string GetVerbatim(string msg)
+        public static string GetVerbatim(string msg, bool translateChat)
         {
             var startTr = msg.IndexOf("{:", StringComparison.Ordinal);
             var endOfOriginal = msg.IndexOf("}@{", StringComparison.Ordinal);
 
             if (startTr != -1 && endOfOriginal != -1)
             {
-                return msg.Substring(0, startTr) + msg.Substring(startTr + 5, endOfOriginal - startTr - 5);
+                if (translateChat)
+                {
+                    msg = msg[..startTr] + msg[(startTr + 5)..endOfOriginal];
+                }
+                else
+                {
+                    msg = msg[..startTr] + msg[(endOfOriginal + 4)..];
+                }
             }
 
             return msg;
