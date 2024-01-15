@@ -134,7 +134,7 @@ namespace API.Plugins.Interfaces
         public string GetName();
 
         /// <summary>
-        /// Perform an internal RCC command (not a server command, use SendText() instead for that!)
+        /// Perform an internal RCC command. Command must be <b>WITHOUT</b> the sign indicating the command (e.g. '/').
         /// </summary>
         /// <param name="command">The command to process</param>
         /// <param name="localVars">Local variables passed along with the command</param>
