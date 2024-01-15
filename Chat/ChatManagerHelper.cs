@@ -29,8 +29,7 @@ namespace API.Chat
         /// <summary>
         /// build a sentence to be displayed in the chat (e.g add "you say", "you shout", "[user name] says" or "[user name] shout")
         /// </summary>
-        public static void BuildChatSentence(string sender, string msg, ChatGroupType type,
-            out string result)
+        public static void BuildChatSentence(IClient client, string sender, string msg, ChatGroupType type, out string result)
         {
             // if its a tell, then use buildTellSentence
             if (type == ChatGroupType.Tell)
@@ -63,20 +62,48 @@ namespace API.Chat
             // Format the sentence with the provided sender name
             var senderName = EntityHelper.RemoveTitleAndShardFromName(sender);
 
-            // TODO Does the char have a CSR title?
-            const string csr = "";
+            // Does the char have a CSR title?
+            var csr = CharacterTitle.IsCsrTitle(EntityHelper.GetTitleFromName(sender)) ? "(CSR) " : "";
 
-            // TODO: The player talks -> show as you say:
+            var userEntity = client.GetApiNetworkManager()?.GetApiEntityManager()?.GetApiUserEntity();
 
-            // TODO: Special case where there is only a title, very rare case for some NPC
-
-            // TODO senderName = STRING_MANAGER.CStringManagerClient.getLocalizedName(senderName); 
-
-            result = type switch
+            if (userEntity != null && senderName == userEntity.GetDisplayName())
             {
-                ChatGroupType.Shout => $"{cat}{csr}{senderName} shouts: {finalMsg}",
-                _ => $"{cat}{csr}{senderName} says: {finalMsg}"
-            };
+                // The player talks
+                result = type switch
+                {
+                    ChatGroupType.Shout => $"§c{cat}{csr}You shout: {finalMsg}",
+                    _ => $"{cat}{csr}You say: {finalMsg}"
+                };
+            }
+            else
+            {
+                // Special case where there is only a title, very rare case for some NPC
+                //if (senderName.Length == 0)
+                //{
+                //    Character entity = EntitiesMngr.getEntityByName(sender, true, true) as CCharacterCL;
+                //    // We need the gender to display the correct title
+                //    bool bWoman = entity != null && entity.getGender() == GSGENDER.female;
+                //
+                //    senderName = STRING_MANAGER.CStringManagerClient.getTitleLocalizedName(CEntityCL.getTitleFromName(sender), bWoman);
+                //    {
+                //        // Sometimes translation contains another title
+                //        int pos = senderName.IndexOf('$');
+                //        if (pos != -1)
+                //        {
+                //            senderName = STRING_MANAGER.CStringManagerClient.getTitleLocalizedName(CEntityCL.getTitleFromName(senderName), bWoman);
+                //        }
+                //    }
+                //}
+                //
+                //senderName = STRING_MANAGER.CStringManagerClient.getLocalizedName(senderName);
+
+                result = type switch
+                {
+                    ChatGroupType.Shout => $"§c{cat}{csr}{senderName} shouts: {finalMsg}",
+                    _ => $"{cat}{csr}{senderName} says: {finalMsg}"
+                };
+            }
         }
 
         /// <summary>
@@ -100,7 +127,7 @@ namespace API.Chat
         {
             const int preTagSize = 5;
 
-            var colorCode = new char[0];
+            var colorCode = Array.Empty<char>();
 
             if (src.Length >= 3)
             {
@@ -111,7 +138,7 @@ namespace API.Chat
 
                 const string newTag = "<NEW>";
 
-                if (src.Length >= preTagSize && src.Substring(0, preTagSize) == newTag)
+                if (src.Length >= preTagSize && src[..preTagSize] == newTag)
                 {
                     startPos = preTagSize;
                     preTag = newTag;
@@ -119,7 +146,7 @@ namespace API.Chat
 
                 const string chgTag = "<CHG>";
 
-                if (src.Length >= preTagSize && src.Substring(0, preTagSize) == chgTag)
+                if (src.Length >= preTagSize && src[..preTagSize] == chgTag)
                 {
                     startPos = preTagSize;
                     preTag = chgTag;

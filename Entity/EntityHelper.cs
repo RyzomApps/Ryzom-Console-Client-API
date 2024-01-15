@@ -8,9 +8,9 @@
 
 namespace API.Entity
 {
-    public class EntityHelper
+    public static class EntityHelper
     {
-        #region Static Methods
+        #region Functions to manipulate the Name
 
         /// <summary>
         /// Removes the specification from a name. The specification is surrounded by '$', and tells the title of the entity (guard, matis merchant, etc ..)
@@ -28,10 +28,25 @@ namespace API.Entity
 
             if (p2 != -1)
             {
-                return name.Substring(0, p1) + name[(p2 + 1)..];
+                return name[..p1] + name[(p2 + 1)..];
             }
 
-            return name.Substring(0, p1);
+            return name[..p1];
+        }
+
+        /// <summary>
+        /// Return the title from a name. The specification is surrounded by '$', and tells the title of the entity (guard, matis merchant, etc ..)
+        /// </summary>
+        public static string GetTitleFromName(in string name)
+        {
+            var p1 = name.IndexOf('$');
+
+            if (p1 == -1)
+                return "";
+
+            var p2 = name.IndexOf('$', p1 + 1);
+
+            return p2 != -1 ? name.Substring(p1 + 1, p2 - p1 - 1) : "";
         }
 
         /// <summary>
@@ -47,7 +62,7 @@ namespace API.Entity
                 return name;
 
             // Remove all shard names (hack)
-            return name.Substring(0, p0) + name[(p1 + 1)..];
+            return name[..p0] + name[(p1 + 1)..];
         }
 
         /// <summary>
@@ -57,6 +72,7 @@ namespace API.Entity
         {
             return RemoveTitleFromName(RemoveShardFromName(name));
         }
+
         #endregion
     }
 }
