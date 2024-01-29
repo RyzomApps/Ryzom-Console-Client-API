@@ -1,10 +1,17 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
 using API.Entity;
 
 namespace API.Chat
 {
     public class ChatManagerHelper
     {
+        /// <summary>
+        /// Pattern for Deepl translated chat messages
+        /// </summary>
+        private const string TranslationPattern = @"(?<pre>.+){:(?<lang>\w{2}):(?<orig>.+)}@{(?<trans>.+)";
+
         /// <summary>
         /// build a sentence to be displayed in the tell
         /// </summary>
@@ -197,25 +204,20 @@ namespace API.Chat
         /// Removes translations from the message
         /// </summary>
         /// <param name="msg">message to be processed</param>
+        /// <param name="translateChat">true, if the chat should be translated</param>
         /// <returns>message without translations</returns>
         public static string GetVerbatim(string msg, bool translateChat)
         {
-            var startTr = msg.IndexOf("{:", StringComparison.Ordinal);
-            var endOfOriginal = msg.IndexOf("}@{", StringComparison.Ordinal);
+            Debug.Print(msg);
 
-            if (startTr != -1 && endOfOriginal != -1)
-            {
-                if (translateChat)
-                {
-                    msg = msg[..startTr] + msg[(startTr + 5)..endOfOriginal];
-                }
-                else
-                {
-                    msg = msg[..startTr] + msg[(endOfOriginal + 4)..];
-                }
-            }
+            var match = Regex.Match(msg, TranslationPattern, RegexOptions.Multiline & RegexOptions.IgnoreCase);
 
-            return msg;
+            if (!match.Success)
+                return msg;
+
+            return translateChat ?
+                $"{match.Groups["pre"].Value}[{match.Groups["lang"].Value}]{match.Groups["trans"].Value}" :
+                $"{match.Groups["pre"].Value}{match.Groups["orig"].Value}";
         }
     }
 }
