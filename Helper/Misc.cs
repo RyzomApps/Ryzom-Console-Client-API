@@ -13,6 +13,11 @@ namespace API.Helper
     /// </summary>
     public static class Misc
     {
+        private static readonly Random _r = new Random();
+
+        private static readonly string[] Consonants = { "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "l", "n", "p", "q", "r", "s", "sh", "sch", "zh", "t", "v", "w", "x" };
+        private static readonly string[] Vowels = { "a", "e", "i", "o", "u", "y"};
+
         /// <summary>
         /// Conerts a byte array to a hexdecimal string
         /// </summary>
@@ -161,6 +166,27 @@ namespace API.Helper
                     ns = tp.Namespace;
 
             return ns;
+        }
+
+        /// <summary>
+        /// Create a random name using the lists of vowels and consonants.
+        /// </summary>
+        /// <param name="len">Minimum length of the name</param>
+        /// <returns>Generated name</returns>
+        public static string GenerateName(int len)
+        {
+            var name = "";
+
+            name += Consonants[_r.Next(Consonants.Length)].ToUpper();
+            name += Vowels[_r.Next(Vowels.Length)];
+
+            while (name.Length < len)
+            {
+                name += Consonants[_r.Next(Consonants.Length)];
+                name += Vowels[_r.Next(Vowels.Length)];
+            }
+
+            return name;
         }
     }
 }
