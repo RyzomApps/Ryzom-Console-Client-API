@@ -12,6 +12,7 @@ using API.Client;
 using API.Database;
 using API.Logger;
 using API.Network;
+using API.Network.Web;
 using API.Plugins.Interfaces;
 using API.Sheet;
 
@@ -63,6 +64,12 @@ namespace API
         /// </summary>
         /// <returns>Factory for SheetIds from names and ids</returns>
         ISheetIdFactory GetApiSheetIdFactory();
+
+        /// <summary>
+        /// Returns the class that can request websites and images from the web.
+        /// </summary>
+        /// <returns>Class to request websites and images from the web.</returns>
+        IWebTransfer GetWebTransfer();
 
         /// <summary>
         /// Online State
