@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Numerics;
 using API.Chat;
 using API.Database;
@@ -239,8 +240,13 @@ namespace API.Plugins
         public virtual void OnServerQuitAbort() { }
 
         /// <summary>
-        // Called when the server wants to teleport the user
+        /// Called when the server wants to teleport the user
         /// </summary>
         public virtual void OnTeleport(bool hasSeason) { }
+
+        /// <summary>
+        /// Called when a get request to the specified Uri was responded
+        /// </summary>
+        public virtual void OnWebTransfer(string url, HttpResponseMessage response) { }
     }
 }

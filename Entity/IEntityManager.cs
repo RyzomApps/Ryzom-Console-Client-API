@@ -12,7 +12,7 @@ namespace API.Entity
         /// <summary>
         /// Contain all 256 entities around the player
         /// </summary>
-        List<IEntity> GetApiEntities();
+        IEntity[] GetApiEntities();
 
         /// <summary>
         /// Get an entity by name. Returns NULL if the entity is not found.
