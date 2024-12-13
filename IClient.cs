@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using API.Client;
 using API.Database;
+using API.Inventory;
 using API.Logger;
 using API.Network;
 using API.Network.Web;
@@ -64,6 +65,12 @@ namespace API
         /// </summary>
         /// <returns>Factory for SheetIds from names and ids</returns>
         ISheetIdFactory GetApiSheetIdFactory();
+
+        /// <summary>
+        /// Returns the class that gives direct access to inventory slots (bag, hands, and equip inventory).
+        /// </summary>
+        /// <returns>Class to manage inventory slots</returns>
+        IInventoryManager GetApiInventoryManager();
 
         /// <summary>
         /// Returns the class that can request websites and images from the web.

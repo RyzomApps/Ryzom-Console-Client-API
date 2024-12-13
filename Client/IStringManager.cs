@@ -13,5 +13,10 @@ namespace API.Client
         /// request the stringId from the local cache or if missing ask the server
         /// </summary>
         bool GetString(uint stringId, out string result, INetworkManager networkManager);
+
+        /// <summary>
+        /// request the dynStringId from the local cache or if missing ask the server
+        /// </summary>
+        bool GetDynString(uint dynStringId, out string result, INetworkManager networkManager);
     }
 }

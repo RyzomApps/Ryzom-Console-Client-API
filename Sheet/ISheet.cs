@@ -1,6 +1,6 @@
 ﻿namespace API.Sheet
 {
-    public interface IEntitySheet
+    public interface ISheet
     {
         /// <summary>
         /// Return the type of the sheet

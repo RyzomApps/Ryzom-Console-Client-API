@@ -248,5 +248,10 @@ namespace API.Plugins
         /// Called when a get request to the specified Uri was responded
         /// </summary>
         public virtual void OnWebTransfer(string url, HttpResponseMessage response) { }
+
+        /// <summary>
+        /// Called when the bag index for a hand slot was initialised
+        /// </summary>
+        public virtual void OnInitEquipHands(int handIndex, int bagIndex) { }
     }
 }
