@@ -308,14 +308,13 @@ namespace API.Plugins
         /// <inheritdoc />
         public bool PerformInternalCommand(string command, Dictionary<string, object> localVars = null)
         {
-            var temp = "";
-            return _client.PerformInternalCommand(command, ref temp, localVars);
+            return _client.PerformInternalCommand(command, out _, localVars);
         }
 
         /// <inheritdoc />
         public bool PerformInternalCommand(string command, ref string responseMsg, Dictionary<string, object> localVars = null)
         {
-            return _client.PerformInternalCommand(command, ref responseMsg, localVars);
+            return _client.PerformInternalCommand(command, out responseMsg, localVars);
         }
 
         /// <inheritdoc />

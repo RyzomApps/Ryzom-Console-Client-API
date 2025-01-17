@@ -91,7 +91,7 @@ namespace API
         /// <param name="responseMsg">May contain a confirmation or error message after processing the command, or "" otherwise.</param>
         /// <param name="localVars">Local variables passed along with the command</param>
         /// <returns>true if the command was indeed an internal RCC command</returns>
-        bool PerformInternalCommand(string command, ref string responseMsg, Dictionary<string, object> localVars = null);
+        bool PerformInternalCommand(string command, out string responseMsg, Dictionary<string, object> localVars = null);
 
         /// <summary>
         /// Register a command in command prompt. Command will be automatically unregistered when unloading the Plugin.
