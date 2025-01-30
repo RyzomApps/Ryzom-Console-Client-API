@@ -253,5 +253,20 @@ namespace API.Plugins
         /// Called when the bag index for a hand slot was initialised
         /// </summary>
         public virtual void OnInitEquipHands(int handIndex, int bagIndex) { }
+
+        /// <summary>
+        /// Called when flying health points (HP) deltas should be display for an entity
+        /// </summary>
+        public virtual void OnCombatFlyingHpDelta(uint entityId, int color, short hpDelta) { }
+
+        /// <summary>
+        /// Called when a combat-related special effect flying text for an entity should be displayed
+        /// </summary>
+        public virtual void OnCombatFlyingTextItemSpecialEffectProc(uint entityId, int color, byte effect, int param) { }
+
+        /// <summary>
+        /// Called when a combat-related flying text for an entity should be displayed
+        /// </summary>
+        public virtual void OnCombatFlyingText(uint entityId, int color, byte type) { }
     }
 }

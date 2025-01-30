@@ -22,7 +22,7 @@ namespace API.Logger
         {
             _logger = logger;
             var prefix = context.GetDescription().GetPrefix();
-            _pluginName = prefix != null ? new StringBuilder().Append("[").Append(prefix).Append("] ").ToString() : "[" + context.GetDescription().GetName() + "] ";
+            _pluginName = prefix != null ? new StringBuilder().Append("[").Append(prefix).Append("] ").ToString() : $"[{context.GetDescription().GetName()}] ";
         }
 
         /// <inheritdoc/>

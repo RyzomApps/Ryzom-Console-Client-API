@@ -1,4 +1,5 @@
-﻿using API.Entity;
+﻿using System.Collections.Generic;
+using API.Entity;
 
 namespace API.Network
 {
@@ -7,11 +8,6 @@ namespace API.Network
     /// </summary>
     public interface INetworkManager
     {
-        /// <summary>
-        /// This is the mainland selected at the SELECT perso!!
-        /// </summary>
-        string PlayerSelectedHomeShardName { get; set; }
-
         /// <summary>
         /// Send - updates when packets were received
         /// </summary>
@@ -30,7 +26,7 @@ namespace API.Network
         void Send();
 
         /// <summary>
-        /// Gets the current server TPS
+        /// Gets the current server tick per second
         /// </summary>
         double[] GetTps();
 
@@ -54,5 +50,14 @@ namespace API.Network
         /// Last tick sent by the server from the network connection
         /// </summary>
         uint GetCurrentServerTick();
+
+        /// <summary>
+        /// This is the mainland selected for the selected character
+        /// </summary>
+        string PlayerSelectedHomeShardName { get; set; }
+
+        bool FreeTrial { get; set; }
+
+        string UserPrivileges { get; set; }
     }
 }

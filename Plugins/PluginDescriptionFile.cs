@@ -226,7 +226,7 @@ namespace API.Plugins
         /// <returns>a descriptive name of the plugin and respective version</returns>
         public string GetFullName()
         {
-            return Name + " v" + Version;
+            return $"{Name} v{Version}";
         }
 
         /// <summary>
@@ -251,7 +251,7 @@ namespace API.Plugins
 
                 if (!new Regex("^[A-Za-z0-9 _.-]+$").IsMatch(Name ?? throw new InvalidOperationException()))
                 {
-                    throw new InvalidDescriptionException("name \'" + Name + "\' contains invalid characters.");
+                    throw new InvalidDescriptionException($"name '{Name}' contains invalid characters.");
                 }
 
                 Name = Name.Replace(' ', '_');

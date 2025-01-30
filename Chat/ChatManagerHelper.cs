@@ -58,7 +58,7 @@ namespace API.Chat
             var cat = "";
 
             if (catStr.Length > 0)
-                cat = "&" + catStr + "&";
+                cat = $"&{catStr}&";
 
             if (cat.Length > 0)
             {

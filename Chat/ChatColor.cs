@@ -144,7 +144,7 @@ namespace API.Chat
 
                     var consoleColor = FromColor(color);
 
-                    msg = msg.Replace(m.Value, "§" + GetMinecraftColorFromConsoleColor(consoleColor));
+                    msg = msg.Replace(m.Value, $"\u00a7{GetMinecraftColorFromConsoleColor(consoleColor)}");
                     m = m.NextMatch();
                 }
             }

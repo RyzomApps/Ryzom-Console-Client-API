@@ -44,7 +44,7 @@ namespace API.Commands
             var s1 = string.IsNullOrEmpty(CmdUsage) ? "" : " §a"; // If either one is empty, no colon :
             var s2 = string.IsNullOrEmpty(CmdDesc) ? "" : "§e: §f"; // If either one is empty, no colon :
 
-            return "§e" + CmdName + s1 + CmdUsage + s2 + CmdDesc;
+            return $"\u00a7e{CmdName}{s1}{CmdUsage}{s2}{CmdDesc}";
         }
 
         /// <summary>

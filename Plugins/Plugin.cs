@@ -131,7 +131,7 @@ namespace API.Plugins
             }
             catch (Exception e)
             {
-                _client.GetLogger().Error("Cannot load configuration from jar\r\n" + e);
+                _client.GetLogger().Error($"Cannot load configuration from plugin\r\n{e}");
             }
 
             _newConfig.SetDefaults(defConfig);
