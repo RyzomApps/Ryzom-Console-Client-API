@@ -5,7 +5,7 @@ using API.Entity;
 
 namespace API.Chat
 {
-    public class ChatManagerHelper
+    public abstract class ChatManagerHelper
     {
         /// <summary>
         /// Pattern for Deepl translated chat messages

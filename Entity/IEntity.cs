@@ -70,9 +70,9 @@ namespace API.Entity
         /// <summary>
         /// Set the current target of the entity
         /// </summary>
-        /// <param name="entityId">TCLEntityId</param>
+        /// <param name="slot">TCLEntityId slot</param>
         /// <remarks>CLFECOMMON::INVALID_SLOT for no target</remarks>
-        void SetTargetSlot(byte entityId);
+        void SetTargetSlot(byte slot);
 
         /// <summary>
         /// Return true if the character is currently dead.
