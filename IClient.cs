@@ -104,6 +104,12 @@ namespace API
         bool RegisterCommand(string cmdName, string cmdDesc, string cmdUsage, CommandRunner callback);
 
         /// <summary>
+        /// Returns a formatted string listing all available commands with their arguments and descriptions
+        /// </summary>
+        /// <returns>Formatted string with command information</returns>
+        string ListAllCommands();
+
+        /// <summary>
         /// CommandBase runner definition.
         /// Returned string will be the output of the command
         /// </summary>
