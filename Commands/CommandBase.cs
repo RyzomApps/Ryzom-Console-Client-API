@@ -57,12 +57,26 @@ namespace API.Commands
         public abstract string Run(IClient handler, string command, Dictionary<string, object> localVars);
 
         /// <summary>
+        /// Perform the command
+        /// </summary>
+        /// <param name="handler">Client</param>
+        /// <param name="command">The full command, eg: 'mycommand arg1 arg2'</param>
+        /// <param name="responseMsg">Output parameter for confirmation/error message, or empty string if no message</param>
+        /// <param name="localVars">Local variables passed along with the command (may be null)</param>
+        /// <returns>True if the command executed successfully, false otherwise</returns>
+        public virtual bool Run(IClient handler, string command, out string responseMsg, Dictionary<string, object> localVars)
+        {
+            responseMsg = Run(handler, command, localVars);
+            return true;
+        }
+
+        /// <summary>
         /// Return a list of aliases for this command.
         /// Override this method if you wish to put aliases to the command
         /// </summary>
         public virtual IEnumerable<string> GetCmdAliases()
         {
-            return new string[0];
+            return [];
         }
 
         /// <summary>

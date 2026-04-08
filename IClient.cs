@@ -85,6 +85,13 @@ namespace API
         bool IsInGame();
 
         /// <summary>
+        /// Checks if a command (including aliases) is registered.
+        /// </summary>
+        /// <param name="command">The command string (can include arguments).</param>
+        /// <returns>True if the command exists, false otherwise.</returns>
+        bool IsValidCommand(string command);
+
+        /// <summary>
         /// Perform an internal RCC command (not a server command, use SendText() instead for that!)
         /// </summary>
         /// <param name="command">The command</param>
