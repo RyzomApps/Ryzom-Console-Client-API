@@ -19,7 +19,6 @@ namespace API.Plugins
         /// </summary>
         public enum DisconnectReason { InGameKick, LoginRejected, ConnectionLost, UserLogout };
 
-
         /// <summary>
         /// CommandBase runner definition.
         /// Returned string will be the output of the command
@@ -47,7 +46,7 @@ namespace API.Plugins
         public virtual void OnInitialize() { }
 
         /// <summary>
-        /// Called every 10 times per second (~100ms or 10fps). Since this blocks the main thread,
+        /// Called every 10 times per second (~100ms or 10fps) by the client. Since this blocks the main thread,
         /// sleeps should be avoided to ensure that network packets are received properly.
         /// </summary>
         public virtual void OnUpdate() { }
@@ -268,5 +267,22 @@ namespace API.Plugins
         /// Called when a combat-related flying text for an entity should be displayed
         /// </summary>
         public virtual void OnCombatFlyingText(uint entityId, int color, byte type) { }
+
+        /// <summary>
+        /// Called when a the server corrects the user position
+        /// </summary>
+        public virtual void OnCorrectPos(Vector3 from, Vector3 dest, Vector3 noisyDest) { }
+
+        /// <summary>
+        /// Called every 10 times per second (~100ms or 10fps) by the server. Since this blocks the main thread,
+        /// sleeps should be avoided to ensure that network packets are received properly.
+        /// </summary>
+        public virtual void OnTick(uint tick) { }
+
+        /// <summary>
+        /// Called when position was queued for sending to the server. Only triggert if position sending is enabled. Since this blocks the main thread,
+        /// sleeps should be avoided to ensure that network packets are received properly.
+        /// </summary>
+        public virtual void OnPositionSent(Vector3 position) { }
     }
 }

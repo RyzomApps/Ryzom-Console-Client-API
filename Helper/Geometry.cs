@@ -19,5 +19,13 @@ namespace API.Helper
         {
             return new Vector3(vector.X, vector.Y, z);
         }
+
+        /// <summary>
+        /// Deep clone of a Vector3.
+        /// </summary>
+        public static Vector3 Clone(this Vector3 vector)
+        {
+            return new Vector3(vector.X, vector.Y, vector.Z);
+        }
     }
 }
