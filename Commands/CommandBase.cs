@@ -6,6 +6,7 @@
 // Copyright 2021 ORelio and Contributers
 ///////////////////////////////////////////////////////////////////
 
+using System;
 using System.Collections.Generic;
 
 namespace API.Commands
@@ -54,6 +55,7 @@ namespace API.Commands
         /// <param name="command">The full command, eg: 'mycommand arg1 arg2'</param>
         /// <param name="localVars">Local variables passed along with the command (may be null)</param>
         /// <returns>A confirmation/error message, or "" if no message</returns>
+        [Obsolete("Use overload with boolean return value")]
         public abstract string Run(IClient handler, string command, Dictionary<string, object> localVars);
 
         /// <summary>
