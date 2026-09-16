@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Numerics;
 using API.Chat;
 using API.Database;
 using API.Network;
 using API.Plugins.Interfaces;
+using API.Sheet;
 
 namespace API.Plugins
 {
@@ -284,5 +284,10 @@ namespace API.Plugins
         /// sleeps should be avoided to ensure that network packets are received properly.
         /// </summary>
         public virtual void OnPositionSent(Vector3 position) { }
+
+        /// <summary>
+        /// Called when the message for the server that the client is ready was pushed to the stream
+        /// </summary>
+        public virtual void OnConnectionReadySent(uint gameTick, ISheetId userSheet, string languageCode) { }
     }
 }
