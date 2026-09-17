@@ -15,7 +15,7 @@ namespace API.Commands
     /// </summary>
     public class GenericCommand : CommandBase
     {
-        public IClient.CommandRunner Runner;
+        private readonly IClient.CommandRunner _runner;
 
         /// <inheritdoc/>
         public override string CmdName { get; }
@@ -27,9 +27,11 @@ namespace API.Commands
         public override string CmdDesc { get; }
 
         /// <inheritdoc/>
-        public override string Run(IClient handler, string command, Dictionary<string, object> localVars)
+        public override bool Run(IClient handler, string command, out string responseMsg, Dictionary<string, object> localVars)
         {
-            return Runner(command, GetArgs(command));
+            // TODO: add a command runner with status and message
+            responseMsg = _runner(command, GetArgs(command));
+            return true;
         }
 
         /// <summary>
@@ -44,7 +46,7 @@ namespace API.Commands
             CmdName = cmdName;
             CmdDesc = cmdDesc;
             CmdUsage = cmdUsage;
-            Runner = callback;
+            _runner = callback;
         }
     }
 }

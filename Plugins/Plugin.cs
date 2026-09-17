@@ -6,15 +6,15 @@
 // Copyright 2021 Bukkit Team
 ///////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 using API.Commands;
 using API.Config;
 using API.Helper.Tasks;
 using API.Logger;
 using API.Plugins.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 
 namespace API.Plugins
 {
@@ -323,7 +323,7 @@ namespace API.Plugins
             var result = _client.RegisterCommand(cmdName, cmdDesc, cmdUsage, callback);
             if (result)
                 _registeredCommands.Add(cmdName.ToLower());
-        
+
             return result;
         }
 

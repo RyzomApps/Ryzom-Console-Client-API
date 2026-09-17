@@ -6,8 +6,8 @@
 // Copyright 2021 Bukkit Team
 ///////////////////////////////////////////////////////////////////
 
-using System.Collections.Generic;
 using API.Helper;
+using System.Collections.Generic;
 
 namespace API.Config
 {

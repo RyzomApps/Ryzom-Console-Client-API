@@ -16,7 +16,7 @@ namespace API.Helper
         private static readonly Random _r = new Random();
 
         private static readonly string[] Consonants = { "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "l", "n", "p", "q", "r", "s", "sh", "sch", "zh", "t", "v", "w", "x" };
-        private static readonly string[] Vowels = { "a", "e", "i", "o", "u", "y"};
+        private static readonly string[] Vowels = { "a", "e", "i", "o", "u", "y" };
 
         /// <summary>
         /// Conerts a byte array to a hexdecimal string

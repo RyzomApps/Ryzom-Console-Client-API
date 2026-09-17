@@ -1,5 +1,5 @@
-﻿using System.Text;
-using API.Plugins.Interfaces;
+﻿using API.Plugins.Interfaces;
+using System.Text;
 
 namespace API.Logger
 {

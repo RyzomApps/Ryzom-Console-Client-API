@@ -14,12 +14,12 @@
         /// Quantity of materials
         /// </summary>
         FsbQuantiy = 1,
-        
+
         /// <summary>
         /// Source life
         /// </summary>
         FsbD = 2,
-        
+
         /// <summary>
         /// Aggressiveness
         /// </summary>

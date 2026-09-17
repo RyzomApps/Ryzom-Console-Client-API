@@ -1,7 +1,7 @@
-﻿using System;
+﻿using API.Entity;
+using System;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
-using API.Entity;
 
 namespace API.Chat
 {

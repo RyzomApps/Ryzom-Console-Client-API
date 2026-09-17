@@ -6,8 +6,6 @@
 // Copyright 2021 Bukkit Team
 ///////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
 using API.Client;
 using API.Database;
 using API.Inventory;
@@ -16,6 +14,8 @@ using API.Network;
 using API.Network.Web;
 using API.Plugins.Interfaces;
 using API.Sheet;
+using System;
+using System.Collections.Generic;
 
 namespace API
 {
@@ -97,7 +97,7 @@ namespace API
         /// <param name="command">The command</param>
         /// <param name="responseMsg">May contain a confirmation or error message after processing the command, or "" otherwise.</param>
         /// <param name="localVars">Local variables passed along with the command</param>
-        /// <returns>true if the command was indeed an internal RCC command</returns>
+        /// <returns>True if the command was executed</returns>
         bool PerformInternalCommand(string command, out string responseMsg, Dictionary<string, object> localVars = null);
 
         /// <summary>

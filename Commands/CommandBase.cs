@@ -56,7 +56,11 @@ namespace API.Commands
         /// <param name="localVars">Local variables passed along with the command (may be null)</param>
         /// <returns>A confirmation/error message, or "" if no message</returns>
         [Obsolete("Use overload with boolean return value")]
-        public abstract string Run(IClient handler, string command, Dictionary<string, object> localVars);
+        public virtual string Run(IClient handler, string command, Dictionary<string, object> localVars)
+        {
+            var success = Run(handler, command, out var responseMsg, localVars);
+            return success ? responseMsg : $"{command} failed";
+        }
 
         /// <summary>
         /// Perform the command
@@ -66,11 +70,8 @@ namespace API.Commands
         /// <param name="responseMsg">Output parameter for confirmation/error message, or empty string if no message</param>
         /// <param name="localVars">Local variables passed along with the command (may be null)</param>
         /// <returns>True if the command executed successfully, false otherwise</returns>
-        public virtual bool Run(IClient handler, string command, out string responseMsg, Dictionary<string, object> localVars)
-        {
-            responseMsg = Run(handler, command, localVars);
-            return true;
-        }
+        public abstract bool Run(IClient handler, string command, out string responseMsg, Dictionary<string, object> localVars);
+
 
         /// <summary>
         /// Return a list of aliases for this command.

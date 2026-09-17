@@ -44,7 +44,7 @@ namespace API.Config
         {
             return _configuration;
         }
-        
+
         /// <summary>
         /// Gets the char that will be used to separate <see cref="ConfigurationSection"/>s<br/>
         /// This value does not affect how the {@link Configuration} is stored, only in how you access the data. The default value is '.'.
