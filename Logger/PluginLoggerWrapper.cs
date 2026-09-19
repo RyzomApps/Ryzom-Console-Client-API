@@ -10,19 +10,35 @@ namespace API.Logger
     /// </summary>
     public class PluginLoggerWrapper : ILogger
     {
-        private readonly ILogger _logger;
         private readonly string _pluginName;
+        private readonly IClient _client;
 
         /// <summary>
         /// Creates a new PluginLoggerWrapper that extracts the name from a plugin.
         /// </summary>
         /// <param name="context">A reference to the plugin</param>
-        /// <param name="logger">Logger that should be wrapped for the plugin</param>
-        public PluginLoggerWrapper(IPlugin context, ILogger logger)
+        /// <param name="client">The main client instance</param>
+        public PluginLoggerWrapper(IPlugin context, IClient client)
         {
-            _logger = logger;
+            _client = client;
             var prefix = context.GetDescription().GetPrefix();
-            _pluginName = prefix != null ? new StringBuilder().Append("[").Append(prefix).Append("] ").ToString() : $"[{context.GetDescription().GetName()}] ";
+            _pluginName = prefix != null ? new StringBuilder().Append('[').Append(prefix).Append("] ").ToString() : $"[{context.GetDescription().GetName()}] ";
+        }
+
+        /// <summary>
+        /// Forwards the message to the client so listeners (e.g. Mimic) can
+        /// observe other plugins' output. Never throws into the caller.
+        /// </summary>
+        private void Fire(string level, string msg)
+        {
+            try
+            {
+                _client?.OnPluginLog(_pluginName, level, msg);
+            }
+            catch
+            {
+                // Never let a listener fault break the logging plugin.
+            }
         }
 
         /// <inheritdoc/>
@@ -103,36 +119,51 @@ namespace API.Logger
         /// <inheritdoc/>
         public void Debug(string msg)
         {
-            if (DebugEnabled)
-                _logger.Debug(_pluginName + msg);
+            if (!DebugEnabled)
+                return;
+
+            _client.GetLogger().Debug(_pluginName + msg);
+            Fire("debug", msg);
         }
 
         /// <inheritdoc/>
         public void Info(string msg)
         {
-            if (InfoEnabled)
-                _logger.Info(_pluginName + msg);
+            if (!InfoEnabled)
+                return;
+
+            _client.GetLogger().Info(_pluginName + msg);
+            Fire("info", msg);
         }
 
         /// <inheritdoc/>
         public void Warn(string msg)
         {
-            if (WarnEnabled)
-                _logger.Warn(_pluginName + msg);
+            if (!WarnEnabled)
+                return;
+
+            _client.GetLogger().Warn(_pluginName + msg);
+            Fire("warn", msg);
         }
 
         /// <inheritdoc/>
         public void Error(string msg)
         {
-            if (ErrorEnabled)
-                _logger.Error(_pluginName + msg);
+            if (!ErrorEnabled)
+                return;
+
+            _client.GetLogger().Error(_pluginName + msg);
+            Fire("error", msg);
         }
 
         /// <inheritdoc/>
         public void Chat(string msg)
         {
             if (ChatEnabled)
-                _logger.Chat(_pluginName + msg);
+                return;
+
+            _client.GetLogger().Chat(_pluginName + msg);
+            Fire("chat", msg);
         }
     }
 }

@@ -150,5 +150,13 @@ namespace API
         /// </summary>
         /// <param name="text">Text to send to the server</param>
         void SendText(string text);
+
+        /// <summary>
+        /// Forwards a plugin's log output to all listeners.
+        /// </summary>
+        /// <param name="pluginName">Name of the plugin that produced the message</param>
+        /// <param name="level">Log level: debug, info, warn or error</param>
+        /// <param name="message">The log message, without plugin prefix</param>
+        void OnPluginLog(string pluginName, string level, string message);
     }
 }

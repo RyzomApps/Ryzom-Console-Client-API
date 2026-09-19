@@ -3,6 +3,7 @@ using API.Database;
 using API.Network;
 using API.Plugins.Interfaces;
 using API.Sheet;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Numerics;
@@ -289,5 +290,10 @@ namespace API.Plugins
         /// Called when the message for the server that the client is ready was pushed to the stream
         /// </summary>
         public virtual void OnConnectionReadySent(uint gameTick, ISheetId userSheet, string languageCode) { }
+
+        /// <summary>
+        /// Called when any plugin writes a log message (info, warn, error, debug).
+        /// </summary>
+        public virtual void OnPluginLog(string pluginName, string level, string message) { }
     }
 }

@@ -253,7 +253,7 @@ namespace API.Plugins
             _dataFolder = dataFolder;
             _classLoader = classLoader;
             _configFile = new FileInfo($@"{dataFolder}/config.yml");
-            _logger = new PluginLoggerWrapper(this, server.GetLogger());
+            _logger = new PluginLoggerWrapper(this, server);
 
             OnLoad();
         }
