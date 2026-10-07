@@ -1,4 +1,10 @@
-﻿using API.Entity;
+///////////////////////////////////////////////////////////////////
+// INetworkManager — full replacement for Ryzom-Console-Client/API/Network/INetworkManager.cs
+// New: SendImpulse + SendMultipartAction (see bottom of the interface).
+///////////////////////////////////////////////////////////////////
+
+using System;
+using API.Entity;
 
 namespace API.Network
 {
@@ -58,5 +64,21 @@ namespace API.Network
         bool FreeTrial { get; set; }
 
         string UserPrivileges { get; set; }
+
+        /// <summary>
+        /// Builds a named impulse (name from msg.xml), lets the callback fill
+        /// the payload and pushes the packet to the connection (sent at next update).
+        /// </summary>
+        /// <param name="msgName">Message name, e.g. "CL_MAIN_CHARSHEET:..." or any name in msg.xml.</param>
+        /// <param name="fillPayload">Optional callback writing the payload bits.</param>
+        /// <returns>'false' if the name is unknown or the client is not connected.</returns>
+        bool SendImpulse(string msgName, Action<IBitStreamWriter> fillPayload = null);
+
+        /// <summary>
+        /// Sends a GenericMultiPart action (FE::GenericMultiPart) directly over
+        /// the network connection (sent at next update).
+        /// </summary>
+        /// <returns>'false' if the client is not connected.</returns>
+        bool SendMultipartAction(byte number, short part, short nbBlock, byte[] partContent, bool allowExceedingMaxSize = true);
     }
 }
