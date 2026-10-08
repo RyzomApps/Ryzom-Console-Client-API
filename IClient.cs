@@ -73,6 +73,12 @@ namespace API
         IInventoryManager GetApiInventoryManager();
 
         /// <summary>
+        /// Returns the class that manages the bot chat (trading) sessions of the client.
+        /// </summary>
+        /// <returns>Class to manage bot chat trading</returns>
+        API.BotChat.IBotChatManager GetApiBotChatManager();
+
+        /// <summary>
         /// Returns the class that can request websites and images from the web.
         /// </summary>
         /// <returns>Class to request websites and images from the web.</returns>

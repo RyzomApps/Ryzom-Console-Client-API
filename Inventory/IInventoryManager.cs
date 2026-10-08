@@ -6,6 +6,8 @@
 // Copyright 2010 Winch Gate Property Limited
 ///////////////////////////////////////////////////////////////////
 
+using System.Collections.Generic;
+
 namespace API.Inventory
 {
 
@@ -37,5 +39,35 @@ namespace API.Inventory
         /// Get item of bag
         /// </summary>
         IItemImage GetBagItem(uint index);
+
+        /// <summary>
+        /// List all non-empty bag entries (live read, works even when the
+        /// inventory was initialized before the bag branch was received).
+        /// </summary>
+        List<IBagEntry> GetBagEntries();
+
+        /// <summary>
+        /// List all non-empty hand entries (handling branch: right hand, left hand).
+        /// Index of the entries is the referenced bag slot.
+        /// </summary>
+        List<IBagEntry> GetHandEntries();
+
+        /// <summary>
+        /// List all non-empty hotbar entries (pocket slots).
+        /// Index of the entries is the referenced bag slot.
+        /// </summary>
+        List<IBagEntry> GetHotbarEntries();
+    }
+
+    /// <summary>
+    /// One non-empty bag slot.
+    /// </summary>
+    public interface IBagEntry
+    {
+        /// <summary>Slot index in the bag (used as slot for selling).</summary>
+        uint Index { get; }
+
+        /// <summary>The item in this slot.</summary>
+        IItemImage Item { get; }
     }
 }
