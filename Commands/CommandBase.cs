@@ -37,6 +37,11 @@ namespace API.Commands
         public abstract string CmdUsage { get; }
 
         /// <summary>
+        /// Category this command belongs to. Defaults to <see cref="CommandCategory.Plugin"/> for plugin-registered commands.
+        /// </summary>
+        public virtual CommandCategory CmdCategory => CommandCategory.Plugin;
+
+        /// <summary>
         /// Get the translated version of command description.
         /// </summary>
         /// <returns>Translated command description</returns>

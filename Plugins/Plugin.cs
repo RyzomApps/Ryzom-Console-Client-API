@@ -327,6 +327,16 @@ namespace API.Plugins
             return result;
         }
 
+        /// <inheritdoc />
+        public bool RegisterCommand(string cmdName, string cmdDesc, string cmdUsage, CommandCategory category, IClient.CommandRunner callback)
+        {
+            var result = _client.RegisterCommand(cmdName, cmdDesc, cmdUsage, category, callback);
+            if (result)
+                _registeredCommands.Add(cmdName.ToLower());
+
+            return result;
+        }
+
         /// <summary>
         /// Will be called every ~100ms.
         /// </summary>

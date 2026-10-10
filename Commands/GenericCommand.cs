@@ -34,6 +34,9 @@ namespace API.Commands
             return true;
         }
 
+        /// <inheritdoc/>
+        public override CommandCategory CmdCategory { get; }
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -46,6 +49,24 @@ namespace API.Commands
             CmdName = cmdName;
             CmdDesc = cmdDesc;
             CmdUsage = cmdUsage;
+            CmdCategory = CommandCategory.Plugin;
+            _runner = callback;
+        }
+
+        /// <summary>
+        /// Constructor with explicit command category
+        /// </summary>
+        /// <param name="cmdName">Name of the command</param>
+        /// <param name="cmdDesc">Description of the command. Support tranlation.</param>
+        /// <param name="cmdUsage">Usage of the command</param>
+        /// <param name="category">Category of the command</param>
+        /// <param name="callback">Method for handling the command</param>
+        public GenericCommand(string cmdName, string cmdDesc, string cmdUsage, CommandCategory category, IClient.CommandRunner callback)
+        {
+            CmdName = cmdName;
+            CmdDesc = cmdDesc;
+            CmdUsage = cmdUsage;
+            CmdCategory = category;
             _runner = callback;
         }
     }

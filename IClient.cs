@@ -7,6 +7,7 @@
 ///////////////////////////////////////////////////////////////////
 
 using API.Client;
+using API.Commands;
 using API.Database;
 using API.Inventory;
 using API.Logger;
@@ -115,6 +116,17 @@ namespace API
         /// <param name="callback">Method for handling the command</param>
         /// <returns>True if successfully registered</returns>
         bool RegisterCommand(string cmdName, string cmdDesc, string cmdUsage, CommandRunner callback);
+
+        /// <summary>
+        /// Register a command in command prompt with an explicit category. Command will be automatically unregistered when unloading the Plugin.
+        /// </summary>
+        /// <param name="cmdName">Name of the command</param>
+        /// <param name="cmdDesc">Description/usage of the command</param>
+        /// <param name="cmdUsage">Usage example</param>
+        /// <param name="category">Category of the command</param>
+        /// <param name="callback">Method for handling the command</param>
+        /// <returns>True if successfully registered</returns>
+        bool RegisterCommand(string cmdName, string cmdDesc, string cmdUsage, CommandCategory category, CommandRunner callback);
 
         /// <summary>
         /// Returns a formatted string listing all available commands with their arguments and descriptions
