@@ -19,4 +19,4 @@ namespace API.Client
         /// </summary>
         bool GetDynString(uint dynStringId, out string result, INetworkManager networkManager);
     }
-}
+}

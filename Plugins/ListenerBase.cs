@@ -234,6 +234,32 @@ namespace API.Plugins
         public virtual void OnPhraseAckExecute(bool cyclic, byte counterValue, bool ok) { }
 
         /// <summary>
+        /// Called when a spell/skill cast begins (CASTING:BEGIN; begin/end are server ticks)
+        /// </summary>
+        public virtual void OnBeginCast(uint begin, uint end) { }
+
+        /// <summary>
+        /// Called when the server confirms or rejects a botchat phrase purchase
+        /// </summary>
+        public virtual void OnPhraseBuyConfirm(ushort phraseId, bool confirmed) { }
+
+        /// <summary>
+        /// Called when another player invites the user to an exchange; invitationText is the
+        /// resolved dyn string (inviter name or placeholder until the string arrives)
+        /// </summary>
+        public virtual void OnExchangeInvitation(uint textId, string invitationText) { }
+
+        /// <summary>
+        /// Called when another player proposes a duel; invitorName is the resolved dyn string
+        /// </summary>
+        public virtual void OnDuelInvitation(uint textId, string invitorName) { }
+
+        /// <summary>
+        /// Called when another player proposes a PvP challenge; invitorName is the resolved dyn string
+        /// </summary>
+        public virtual void OnPvpChallengeInvitation(uint textId, string invitorName) { }
+
+        /// <summary>
         /// Called when the server cancels the client quit process
         /// </summary>
         public virtual void OnServerQuitAbort() { }
@@ -261,12 +287,12 @@ namespace API.Plugins
         /// <summary>
         /// Called when a combat-related special effect flying text for an entity should be displayed
         /// </summary>
-        public virtual void OnCombatFlyingTextItemSpecialEffectProc(uint entityId, int color, byte effect, int param) { }
+        public virtual void OnCombatFlyingTextItemSpecialEffectProc(uint entityId, int color, API.Entity.TItemSpecialEffect effect, int param) { }
 
         /// <summary>
         /// Called when a combat-related flying text for an entity should be displayed
         /// </summary>
-        public virtual void OnCombatFlyingText(uint entityId, int color, byte type) { }
+        public virtual void OnCombatFlyingText(uint entityId, int color, API.Entity.TCombatFlyingText type) { }
 
         /// <summary>
         /// Called when a the server corrects the user position

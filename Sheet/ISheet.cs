@@ -7,4 +7,4 @@
         /// </summary>
         SheetType Type { get; set; }
     }
-}
+}

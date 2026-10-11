@@ -68,4 +68,4 @@ namespace API.Helper
 
         internal static string SeasonName(long tick) => Seasons[SeasonIndex(tick)];
     }
-}
+}

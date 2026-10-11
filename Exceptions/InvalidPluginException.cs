@@ -28,4 +28,4 @@ namespace API.Exceptions
         /// <param name="message">The detail message is saved for later retrieval.</param>
         public InvalidPluginException(string message) : base(message) { }
     }
-}
+}

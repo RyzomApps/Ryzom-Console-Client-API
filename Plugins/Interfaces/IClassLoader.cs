@@ -20,4 +20,4 @@ namespace API.Plugins.Interfaces
         /// </summary>
         void Initialize(Plugin plugin);
     }
-}
+}

@@ -27,4 +27,4 @@
         /// <returns>An instance of <see cref="API.Entity.IEntity"/> if found; otherwise, null.</returns>
         public IEntity GetEntityByCompressedIndex(uint compressedIndex);
     }
-}
+}

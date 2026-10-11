@@ -18,4 +18,4 @@ namespace API.Entity
         Neutral,
         Unknown
     }
-}
+}

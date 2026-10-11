@@ -177,4 +177,4 @@ namespace API
         /// <param name="message">The log message, without plugin prefix</param>
         void OnPluginLog(string pluginName, string level, string message);
     }
-}
+}

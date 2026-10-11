@@ -115,4 +115,4 @@ namespace API.Commands
             return args.Length == 1 && args[0] == "" ? new string[] { } : args;
         }
     }
-}
+}

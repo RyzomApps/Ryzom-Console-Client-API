@@ -29,4 +29,4 @@ namespace API.Chat
 
         NbChatMode
     };
-}
+}

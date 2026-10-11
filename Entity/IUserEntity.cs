@@ -29,4 +29,4 @@ namespace API.Entity
         /// </summary>
         void Attack();
     }
-}
+}

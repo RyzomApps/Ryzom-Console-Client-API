@@ -24,4 +24,4 @@ namespace API.Database
         /// <param name="bank">The banks we want to reset</param>
         void ResetBank(in uint gc, in uint bank);
     }
-}
+}

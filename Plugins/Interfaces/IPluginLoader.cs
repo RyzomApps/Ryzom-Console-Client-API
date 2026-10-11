@@ -66,4 +66,4 @@ namespace API.Plugins.Interfaces
         /// <param name="plugin">Plugin to disable</param>
         void DisablePlugin(IPlugin plugin);
     }
-}
+}

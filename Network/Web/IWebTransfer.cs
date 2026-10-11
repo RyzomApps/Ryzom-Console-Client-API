@@ -11,4 +11,4 @@ namespace API.Network.Web
         /// <returns>Response to the get request.</returns>
         HttpResponseMessage Get(string url);
     }
-}
+}

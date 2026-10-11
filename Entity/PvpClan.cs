@@ -46,4 +46,4 @@ namespace API.Entity
         // number of bits needed to store all valid values (all but Unknown)
         NbBits = 4
     };
-}
+}

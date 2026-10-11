@@ -27,4 +27,4 @@ namespace API.Exceptions
         /// <param name="message">The detail message.</param>
         public IllegalPluginAccessException(string message) : base(message) { }
     }
-}
+}

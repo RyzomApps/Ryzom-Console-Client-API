@@ -93,37 +93,37 @@ namespace API.BotChat
         List<TradeEntry> GetTradeList();
 
         /// <summary>
-        /// Start a trade session for items with the bot currently in front of the player.
+        /// Start a trade session for items with the currently targeted bot/NPC.
         /// </summary>
         /// <returns>True if the impulse was sent.</returns>
         bool SendStartTradeItem();
 
         /// <summary>
-        /// Start a trade session for teleports with the bot currently in front of the player.
+        /// Start a trade session for teleports with the currently targeted bot/NPC.
         /// </summary>
         /// <returns>True if the impulse was sent.</returns>
         bool SendStartTradeTeleport();
 
         /// <summary>
-        /// Start a trade session for faction items with the bot currently in front of the player.
+        /// Start a trade session for faction items with the currently targeted bot/NPC.
         /// </summary>
         /// <returns>True if the impulse was sent.</returns>
         bool SendStartTradeFaction();
 
         /// <summary>
-        /// Start a trade session for skills with the bot currently in front of the player.
+        /// Start a trade session for skills with the currently targeted bot/NPC.
         /// </summary>
         /// <returns>True if the impulse was sent.</returns>
         bool SendStartTradeSkill();
 
         /// <summary>
-        /// Start a trade session for pacts with the bot currently in front of the player.
+        /// Start a trade session for pacts with the currently targeted bot/NPC.
         /// </summary>
         /// <returns>True if the impulse was sent.</returns>
         bool SendStartTradePact();
 
         /// <summary>
-        /// Start a trade session for actions (phrases) with the bot currently in front of the player.
+        /// Start a trade session for actions (phrases) with the currently targeted bot/NPC.
         /// </summary>
         /// <returns>True if the impulse was sent.</returns>
         bool SendStartTradeAction();
@@ -162,6 +162,14 @@ namespace API.BotChat
         /// <param name="quantity">Quantity to buy</param>
         /// <returns>True if the impulse was sent.</returns>
         bool SendBuyItem(byte index, ushort quantity);
+
+        /// <summary>
+        /// Buy a phrase of the current trade list (PHRASE:BUY, e.g. from trainers).
+        /// </summary>
+        /// <param name="index">Index of the entry in the trade list (0..7)</param>
+        /// <param name="phraseId">Phrase slot to buy into, 0 for not castable phrases</param>
+        /// <returns>True if the impulse was sent.</returns>
+        bool SendBuyPhrase(byte index, ushort phraseId);
 
         /// <summary>
         /// Sell an item from the inventory to the current vendor (BOTCHAT:SELL).

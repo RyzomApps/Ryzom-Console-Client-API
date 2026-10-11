@@ -10,4 +10,4 @@ namespace API.Sheet
         /// <summary>Item Type</summary>
         ItemType ItemType { get; set; }
     }
-}
+}

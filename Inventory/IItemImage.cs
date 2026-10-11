@@ -22,4 +22,4 @@ namespace API.Inventory
         byte GetResaleFlag();
         bool GetLockedByOwner();
     }
-}
+}

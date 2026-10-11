@@ -25,4 +25,4 @@ namespace API.Plugins.Interfaces
         /// <returns>true if a valid command, otherwise false</returns>
         public bool OnCommand(object sender, ICommand command, string label, string[] args);
     }
-}
+}

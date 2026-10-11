@@ -80,4 +80,4 @@ namespace API.Plugins
             return new List<string> { Class.ToString() };
         }
     }
-}
+}

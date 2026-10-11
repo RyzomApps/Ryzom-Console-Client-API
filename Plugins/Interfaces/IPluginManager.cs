@@ -106,4 +106,4 @@ namespace API.Plugins.Interfaces
         /// <param name="evt"> Event details</param>
         void CallEvent(Action<ListenerBase> evt);
     }
-}
+}

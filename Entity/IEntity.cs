@@ -79,4 +79,4 @@ namespace API.Entity
         /// </summary>
         bool IsDead();
     }
-}
+}

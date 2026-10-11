@@ -12,4 +12,4 @@ namespace API.Plugins.Interfaces
     /// Simple interface for tagging all EventListeners
     /// </summary>
     public interface IListener { }
-}
+}

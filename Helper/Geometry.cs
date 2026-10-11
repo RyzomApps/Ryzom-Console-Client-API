@@ -28,4 +28,4 @@ namespace API.Helper
             return new Vector3(vector.X, vector.Y, vector.Z);
         }
     }
-}
+}

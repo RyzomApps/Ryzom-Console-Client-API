@@ -43,4 +43,4 @@
         /// </summary>
         byte GetCurrentBarValue(TfsBarIndex index);
     }
-}
+}

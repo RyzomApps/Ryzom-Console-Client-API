@@ -27,4 +27,4 @@ namespace API.Exceptions
         /// <param name="message">Brief message explaining the cause of the exception</param>
         public UnknownDependencyException(string message) : base(message) { }
     }
-}
+}

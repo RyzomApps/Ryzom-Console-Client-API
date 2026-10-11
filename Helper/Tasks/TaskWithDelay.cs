@@ -50,4 +50,4 @@ namespace API.Helper.Tasks
             return _tickCounter <= 0 || _dateToLaunch < DateTime.Now;
         }
     }
-}
+}

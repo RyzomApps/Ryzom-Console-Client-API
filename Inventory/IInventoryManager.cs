@@ -70,4 +70,4 @@ namespace API.Inventory
         /// <summary>The item in this slot.</summary>
         IItemImage Item { get; }
     }
-}
+}

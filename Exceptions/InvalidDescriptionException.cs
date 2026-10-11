@@ -35,4 +35,4 @@ namespace API.Exceptions
         /// <param name="message">Brief message explaining the cause of the exception</param>
         public InvalidDescriptionException(string message) : base(message) { }
     }
-}
+}

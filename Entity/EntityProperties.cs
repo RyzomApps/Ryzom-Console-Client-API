@@ -107,4 +107,4 @@ namespace API.Entity
             _properties = new BitArray(BitConverter.GetBytes(p));
         }
     }
-}
+}

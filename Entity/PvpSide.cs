@@ -14,4 +14,4 @@ namespace API.Entity
         OutpostAttacker = 1,
         UnknownPvpSide
     };
-}
+}

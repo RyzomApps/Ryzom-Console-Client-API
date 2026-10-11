@@ -9,4 +9,4 @@
         /// <returns>pointer on the sheet according to the param or 0 if any pb</returns>
         ISheet Get(ISheetId num);
     }
-}
+}
