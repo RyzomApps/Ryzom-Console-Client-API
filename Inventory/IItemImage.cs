@@ -21,5 +21,6 @@ namespace API.Inventory
         byte GetInfoVersion();
         byte GetResaleFlag();
         bool GetLockedByOwner();
+        bool GetWorned();
     }
-}
+}

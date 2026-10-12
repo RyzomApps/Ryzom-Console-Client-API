@@ -80,6 +80,12 @@ namespace API
         API.BotChat.IBotChatManager GetApiBotChatManager();
 
         /// <summary>
+        /// Returns the compass landmark manager (JOURNAL:ADD_COMPASS entries).
+        /// </summary>
+        /// <returns>Class that tracks the compass landmarks sent by the server.</returns>
+        API.Compass.ICompassManager GetApiCompassManager();
+
+        /// <summary>
         /// Returns the class that can request websites and images from the web.
         /// </summary>
         /// <returns>Class to request websites and images from the web.</returns>
@@ -177,4 +183,4 @@ namespace API
         /// <param name="message">The log message, without plugin prefix</param>
         void OnPluginLog(string pluginName, string level, string message);
     }
-}
+}

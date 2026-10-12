@@ -44,6 +44,24 @@ namespace API.BotChat
     }
 
     /// <summary>
+    /// One entry of the mission list currently displayed by the server
+    /// (SERVER:CHOOSE_MISSIONS branch).
+    /// </summary>
+    public struct MissionEntry
+    {
+        /// <summary>Slot index in the current page (0..7). Use it for PickMission().</summary>
+        public byte Index;
+        /// <summary>Sheet id of the mission icon (a .mission_icon sheet, 0 = none).</summary>
+        public uint IconId;
+        /// <summary>String manager id of the mission title (0 = none).</summary>
+        public uint TextId;
+        /// <summary>String manager id of the mission description (0 = none).</summary>
+        public uint DetailTextId;
+        /// <summary>Prerequisite state (see game_share/mission_desc.h/TPreReqState).</summary>
+        public byte PrereqState;
+    }
+
+    /// <summary>
     /// Gives plugins access to the bot chat (trading) session of the client:
     /// events when a chat opens/closes, impulses to start a trade, browse
     /// pages and buy items, and read access to the trade list database branch.
@@ -190,5 +208,46 @@ namespace API.BotChat
         /// </summary>
         /// <returns>True if the impulse was sent.</returns>
         bool SendEndTrade();
+
+        /// <summary>
+        /// Id of the current mission session as sent by the client in the last
+        /// StartChooseMission/NextMissionPage call (0 when no mission session is running).
+        /// </summary>
+        ushort CurrentMissionSessionId { get; }
+
+        /// <summary>Page id of the mission list currently loaded (0..N, read from the database).</summary>
+        uint MissionPageId { get; }
+
+        /// <summary>True if the server announced more mission pages after the current one.</summary>
+        bool MissionHasNextPage { get; }
+
+        /// <summary>
+        /// Read the current mission list from the client database branch
+        /// SERVER:CHOOSE_MISSIONS.
+        /// </summary>
+        /// <returns>Up to 8 entries; empty slots (text id 0) are skipped.</returns>
+        List<MissionEntry> GetMissionList();
+
+        /// <summary>
+        /// Open the mission menu of the currently targeted bot/NPC
+        /// (BOTCHAT:START_CHOOSE_MISSION). The server fills the
+        /// SERVER:CHOOSE_MISSIONS branch with the first page.
+        /// </summary>
+        /// <returns>True if the impulse was sent.</returns>
+        bool SendStartChooseMission();
+
+        /// <summary>
+        /// Ask the server for the next page of the current mission session
+        /// (BOTCHAT:NEXT_MISSION_PAGE).
+        /// </summary>
+        /// <returns>True if the impulse was sent.</returns>
+        bool SendNextMissionPage();
+
+        /// <summary>
+        /// Accept a mission of the current mission list (BOTCHAT:PICK_MISSION).
+        /// </summary>
+        /// <param name="index">Index of the entry in the mission list (0..7)</param>
+        /// <returns>True if the impulse was sent.</returns>
+        bool SendPickMission(byte index);
     }
 }
