@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace API.Commands
 {
@@ -88,6 +89,42 @@ namespace API.Commands
         }
 
         /// <summary>
+        /// Run a command's remaining work on a background task and deliver the
+        /// final result later through the client logger, like a normal command
+        /// result. The command's Run should return true immediately with a text
+        /// such as "Command sent - result follows...".
+        /// The task (e.g. waiting for string responses) handles its own timeout.
+        /// </summary>
+        /// <param name="handler">Client; used to marshal the result back to the main thread</param>
+        /// <param name="work">Work executed on the task pool; returns the final command result (success flag + rendered text)</param>
+        protected static void RunAsyncTask(IClient handler, Func<(bool success, string text)> work)
+        {
+            Task.Run(() =>
+            {
+                (bool success, string text) result;
+
+                try
+                {
+                    result = work();
+                }
+                catch (Exception e)
+                {
+                    result = (false, $"Command error: {e.Message}");
+                }
+
+                handler.InvokeOnMainThread(() =>
+                {
+                    var logger = handler.GetLogger();
+
+                    if (result.success)
+                        logger.Info(result.text);
+                    else
+                        logger.Error(result.text);
+                });
+            });
+        }
+
+        /// <summary>
         /// Check if at least one argument has been passed to the command
         /// </summary>
         public static bool HasArg(string command)
@@ -115,4 +152,4 @@ namespace API.Commands
             return args.Length == 1 && args[0] == "" ? new string[] { } : args;
         }
     }
-}
+}
