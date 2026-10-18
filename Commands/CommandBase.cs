@@ -43,6 +43,20 @@ namespace API.Commands
         public virtual CommandCategory CmdCategory => CommandCategory.Plugin;
 
         /// <summary>
+        /// True when the command can deliver its real result asynchronously, so the
+        /// immediate responseMsg of <see cref="Run"/> may be empty or only an
+        /// acknowledgement. Two modes:
+        /// 1. Deferred logger output (commands using <see cref="RunAsyncTask"/>,
+        ///    e.g. missions, botmissionlist: full text arrives later in the console).
+        /// 2. Server-echoed results (chat emissions, who, where, stance and team
+        ///    commands: the visible result arrives later as chat/system events).
+        /// Consumers such as plugins can use IClient.IsCommandAsync to detect this
+        /// instead of maintaining their own verb lists.
+        /// Override this to true in such commands.
+        /// </summary>
+        public virtual bool CmdAsync => false;
+
+        /// <summary>
         /// Get the translated version of command description.
         /// </summary>
         /// <returns>Translated command description</returns>

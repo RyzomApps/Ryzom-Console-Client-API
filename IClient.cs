@@ -105,6 +105,15 @@ namespace API
         bool IsValidCommand(string command);
 
         /// <summary>
+        /// Checks if a command (including aliases) can deliver its result asynchronously:
+        /// the immediate response of PerformInternalCommand may be only an acknowledgement
+        /// and the real result follows later through the client logger.
+        /// </summary>
+        /// <param name="command">The command string (can include arguments).</param>
+        /// <returns>True if the command defers its result, false otherwise (also false for unknown commands).</returns>
+        bool IsCommandAsync(string command);
+
+        /// <summary>
         /// Perform an internal RCC command (not a server command, use SendText() instead for that!)
         /// </summary>
         /// <param name="command">The command</param>
